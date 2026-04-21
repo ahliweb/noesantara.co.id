@@ -71,41 +71,39 @@ document.addEventListener('DOMContentLoaded', () => {
     const formatNum = (num) => num.toLocaleString('id-ID');
     const parseNum = (str) => parseInt(str.replace(/\./g, '')) || 0;
 
-    const priceCustomer = document.getElementById('price-customer');
-    const tiers = [
-        { price: document.getElementById('price-dropshipper'), margin: document.getElementById('margin-dropshipper'), pct: document.getElementById('pct-dropshipper') },
-        { price: document.getElementById('price-reseller'), margin: document.getElementById('margin-reseller'), pct: document.getElementById('pct-reseller') },
-        { price: document.getElementById('price-agen'), margin: document.getElementById('margin-agen'), pct: document.getElementById('pct-agen') }
-    ];
+    const simulasiQty = document.getElementById('simulasi-qty');
+    const totalDropshipper = document.getElementById('total-dropshipper');
+    const totalReseller = document.getElementById('total-reseller');
+    const totalAgen = document.getElementById('total-agen');
 
-    function calculateMargins() {
-        const customerVal = parseNum(priceCustomer.innerText);
+    const MARGIN_DROPSHIPPER = 30000;
+    const MARGIN_RESELLER = 50000;
+    const MARGIN_AGEN = 70000;
+
+    function calculateTotalProfits() {
+        const qty = parseNum(simulasiQty.innerText);
         
-        tiers.forEach(tier => {
-            const tierVal = parseNum(tier.price.innerText);
-            const margin = customerVal - tierVal;
-            tier.margin.innerText = formatNum(margin);
-            tier.pct.innerText = customerVal > 0 ? Math.round((margin / customerVal) * 100) : 0;
-        });
+        totalDropshipper.innerText = formatNum(qty * MARGIN_DROPSHIPPER);
+        totalReseller.innerText = formatNum(qty * MARGIN_RESELLER);
+        totalAgen.innerText = formatNum(qty * MARGIN_AGEN);
     }
 
-    const editableNums = document.querySelectorAll('.editable-num');
-    editableNums.forEach(field => {
-        field.addEventListener('input', calculateMargins);
+    if (simulasiQty) {
+        simulasiQty.addEventListener('input', calculateTotalProfits);
         
-        field.addEventListener('blur', () => {
-            field.innerText = formatNum(parseNum(field.innerText));
-            calculateMargins();
+        simulasiQty.addEventListener('blur', () => {
+            simulasiQty.innerText = formatNum(parseNum(simulasiQty.innerText));
+            calculateTotalProfits();
         });
 
-        field.addEventListener('keypress', (e) => {
+        simulasiQty.addEventListener('keypress', (e) => {
             if (!/[\d\.]/.test(e.key) && e.key !== 'Enter') {
                 e.preventDefault();
             }
             if (e.key === 'Enter') {
                 e.preventDefault();
-                field.blur();
+                simulasiQty.blur();
             }
         });
-    });
+    }
 });
