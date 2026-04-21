@@ -155,14 +155,14 @@ img {
   padding: 1rem 0;
   z-index: 1000;
   transition: all 0.3s ease;
-  background-color: rgba(255, 255, 240, 0.95);
+  background-color: rgba(17, 17, 17, 0.95); /* Black to blend with logo */
   backdrop-filter: blur(10px);
   box-shadow: var(--shadow-sm);
 }
 
 .header.scrolled {
   padding: 0.8rem 0;
-  background-color: rgba(255, 255, 240, 0.98);
+  background-color: rgba(17, 17, 17, 0.98);
   box-shadow: var(--shadow-md);
 }
 
@@ -173,7 +173,7 @@ img {
 }
 
 .logo img {
-  height: 50px;
+  height: 70px; /* Increased height for vertical logo */
 }
 
 .nav-links {
@@ -184,7 +184,7 @@ img {
 
 .nav-links a {
   font-weight: 500;
-  color: var(--color-primary-dark);
+  color: var(--color-white);
   font-size: 0.95rem;
 }
 
@@ -197,7 +197,7 @@ img {
   background: none;
   border: none;
   font-size: 1.5rem;
-  color: var(--color-primary-dark);
+  color: var(--color-white);
   cursor: pointer;
 }
 
