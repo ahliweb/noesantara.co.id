@@ -81,7 +81,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const MARGIN_AGEN = 70000;
 
     function calculateTotalProfits() {
-        const qty = parseNum(simulasiQty.innerText);
+        // Automatically remove any non-numeric characters as the user types (except dots which we handle below)
+        const cleanStr = simulasiQty.value.replace(/\./g, '').replace(/\D/g, '');
+        const qty = parseInt(cleanStr) || 0;
         
         totalDropshipper.innerText = formatNum(qty * MARGIN_DROPSHIPPER);
         totalReseller.innerText = formatNum(qty * MARGIN_RESELLER);
@@ -89,17 +91,25 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (simulasiQty) {
-        simulasiQty.addEventListener('input', calculateTotalProfits);
+        // Trigger calculation immediately when typing
+        simulasiQty.addEventListener('input', function() {
+            // Remove non-numeric chars immediately so user can't type letters
+            this.value = this.value.replace(/[^0-9]/g, '');
+            calculateTotalProfits();
+        });
         
         simulasiQty.addEventListener('blur', () => {
-            simulasiQty.innerText = formatNum(parseNum(simulasiQty.innerText));
+            const qty = parseInt(simulasiQty.value.replace(/\D/g, '')) || 0;
+            simulasiQty.value = formatNum(qty);
             calculateTotalProfits();
         });
 
+        simulasiQty.addEventListener('focus', () => {
+            // Remove dots formatting when focusing so it's easy to edit
+            simulasiQty.value = simulasiQty.value.replace(/\./g, '');
+        });
+
         simulasiQty.addEventListener('keypress', (e) => {
-            if (!/[\d\.]/.test(e.key) && e.key !== 'Enter') {
-                e.preventDefault();
-            }
             if (e.key === 'Enter') {
                 e.preventDefault();
                 simulasiQty.blur();
