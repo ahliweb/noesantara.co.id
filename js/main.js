@@ -67,11 +67,41 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(el);
     });
 
-    // 4. ContentEditable fields formatting (Simulasi Keuntungan)
-    const editableFields = document.querySelectorAll('.contenteditable');
-    editableFields.forEach(field => {
-        // Prevent pressing Enter (line breaks) in the editable fields
+    // 4. Dynamic Profit Calculation (Simulasi Keuntungan)
+    const formatNum = (num) => num.toLocaleString('id-ID');
+    const parseNum = (str) => parseInt(str.replace(/\./g, '')) || 0;
+
+    const priceCustomer = document.getElementById('price-customer');
+    const tiers = [
+        { price: document.getElementById('price-dropshipper'), margin: document.getElementById('margin-dropshipper'), pct: document.getElementById('pct-dropshipper') },
+        { price: document.getElementById('price-reseller'), margin: document.getElementById('margin-reseller'), pct: document.getElementById('pct-reseller') },
+        { price: document.getElementById('price-agen'), margin: document.getElementById('margin-agen'), pct: document.getElementById('pct-agen') }
+    ];
+
+    function calculateMargins() {
+        const customerVal = parseNum(priceCustomer.innerText);
+        
+        tiers.forEach(tier => {
+            const tierVal = parseNum(tier.price.innerText);
+            const margin = customerVal - tierVal;
+            tier.margin.innerText = formatNum(margin);
+            tier.pct.innerText = customerVal > 0 ? Math.round((margin / customerVal) * 100) : 0;
+        });
+    }
+
+    const editableNums = document.querySelectorAll('.editable-num');
+    editableNums.forEach(field => {
+        field.addEventListener('input', calculateMargins);
+        
+        field.addEventListener('blur', () => {
+            field.innerText = formatNum(parseNum(field.innerText));
+            calculateMargins();
+        });
+
         field.addEventListener('keypress', (e) => {
+            if (!/[\d\.]/.test(e.key) && e.key !== 'Enter') {
+                e.preventDefault();
+            }
             if (e.key === 'Enter') {
                 e.preventDefault();
                 field.blur();
