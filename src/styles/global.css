@@ -182,6 +182,19 @@ img {
   align-items: center;
 }
 
+.desktop-hide {
+  display: none !important;
+}
+
+@media (max-width: 768px) {
+  .mobile-hide {
+    display: none !important;
+  }
+  .desktop-hide {
+    display: flex !important;
+  }
+}
+
 .nav-links a {
   font-weight: 500;
   color: var(--color-white);
