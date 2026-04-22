@@ -107,4 +107,15 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // 5. Hero Slider
+    const slides = document.querySelectorAll('.hero-slider .slide');
+    if (slides.length > 1) {
+        let currentSlide = 0;
+        setInterval(() => {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }, 5000); // Change slide every 5 seconds
+    }
+
 });
