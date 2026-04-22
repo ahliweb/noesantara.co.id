@@ -928,6 +928,20 @@ img {
 }
 
 @media (max-width: 768px) {
+  :root {
+    --section-padding: 3rem 1rem;
+  }
+  
+  .pilar-grid,
+  .kandungan-grid,
+  .simulasi-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+
+  .testimoni-grid {
+    grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
+  }
+
   .nav-links {
     position: fixed;
     top: 70px;

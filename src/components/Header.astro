@@ -75,11 +75,7 @@ const currentPath = Astro.url.pathname;
             box-shadow: none;
             background-color: transparent;
             padding-left: 1rem;
-            display: none; /* Can be toggled via JS if needed, but keeping it simple for hover/active */
-        }
-        .nav-dropdown:hover .dropdown-content,
-        .nav-dropdown:active .dropdown-content {
-            display: block;
+            display: block; /* Selalu tampilkan submenu di mobile agar mudah diklik */
         }
     }
 </style>
