@@ -1,0 +1,184 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Beranda" description="Membangun Ekosistem Pertanian Berkelanjutan, Menyejahterakan Petani Nusantara.">
+    <!-- Hero Section -->
+    <section class="hero" id="beranda">
+        <div class="container">
+            <div class="hero-content">
+                <h1 style="font-size: 3.5rem; line-height: 1.2; margin-bottom: 1.5rem;">Membangun Ekosistem <br/><span style="color: var(--color-gold);">Pertanian Berkelanjutan</span></h1>
+                <p style="font-size: 1.2rem; margin-bottom: 2rem;">PT Rumah Sehat Noesantara hadir dengan inovasi produk pembenah tanah premium dan peluang kemitraan inklusif untuk kemajuan agribisnis Indonesia.</p>
+                <div class="hero-btns">
+                    <a href="/produk" class="btn btn-outline" style="border-color: white; color: white;">Kenali Produk Kami</a>
+                    <a href="/kemitraan" class="btn btn-primary">Gabung Kemitraan</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Corporate Intro Ringkas -->
+    <section class="bg-white pilar-section" style="padding-top: 5rem; padding-bottom: 3rem;">
+        <div class="container text-center" style="max-width: 800px;">
+            <h2 class="section-title text-primary">PT Rumah Sehat Noesantara</h2>
+            <p style="font-size: 1.1rem; color: var(--color-text); margin-bottom: 2rem;">Kami adalah perusahaan yang berfokus pada inovasi ekosistem—dimulai dari menyehatkan tanah pertanian yang bermuara pada kesehatan manusia, dan menciptakan peluang usaha yang memberdayakan masyarakat. Kami percaya kemitraan yang kuat adalah kunci pertumbuhan ekonomi lokal.</p>
+            <a href="/perusahaan" style="color: var(--color-gold); font-weight: 600; text-decoration: underline;">Pelajari Profil Perusahaan &rarr;</a>
+        </div>
+    </section>
+
+    <!-- 3 Pilar Bisnis (Ekosistem) -->
+    <section class="pilar-section bg-stone" id="pilar">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">Fokus Ekosistem Bisnis Kami</h2>
+                <p class="section-subtitle">Membangun rantai nilai berkelanjutan dari kesehatan lahan hingga pemberdayaan ekonomi lokal.</p>
+            </div>
+            
+            <div class="pilar-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+                <div class="pilar-card active-pilar">
+                    <i class="fas fa-seedling pilar-icon" style="color: white;"></i>
+                    <h3>Solusi Pertanian</h3>
+                    <p>Fokus utama kami mengembalikan kesuburan alam secara berkelanjutan melalui produk pembenah tanah premium.</p>
+                </div>
+                
+                <div class="pilar-card">
+                    <i class="fas fa-heartbeat pilar-icon"></i>
+                    <h3>Kesehatan Manusia</h3>
+                    <p>Produk herbal dan suplemen untuk menunjang kualitas hidup yang lebih baik berawal dari hasil bumi yang sehat.</p>
+                    <span class="pilar-badge">Akan Datang</span>
+                </div>
+                
+                <div class="pilar-card">
+                    <i class="fas fa-shopping-cart pilar-icon"></i>
+                    <h3>Aplikasi E-Commerce</h3>
+                    <p>Platform belanja digital terintegrasi yang memudahkan distribusi dan menguntungkan seluruh mitra keagenan.</p>
+                    <span class="pilar-badge">Akan Datang</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Produk Unggulan -->
+    <section class="bg-white pilar-section">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">Produk Unggulan</h2>
+                <p class="section-subtitle">Inovasi premium untuk hasil pertanian maksimal dan lahan yang subur.</p>
+            </div>
+            
+            <div class="simulasi-grid" style="grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));">
+                <div class="simulasi-card" style="text-align: center;">
+                    <img src="/assets/terragen/terragen-produk-1.jpeg" alt="TerraGen" style="width: 100%; height: 250px; object-fit: cover; border-radius: var(--radius-md); margin-bottom: 1.5rem;">
+                    <h3 class="text-primary" style="font-family: var(--font-sans); margin-bottom: 0.5rem; font-size: 1.8rem;">TerraGen</h3>
+                    <p style="color: var(--color-gold); font-weight: 500; margin-bottom: 1rem;">Potassium Humate Plus</p>
+                    <p style="color: var(--color-text-light); margin-bottom: 2rem;">Pembenah tanah premium untuk mengembalikan kesuburan tanah yang rusak dan memaksimalkan hasil panen secara alami.</p>
+                    <a href="/produk/terragen" class="btn btn-outline" style="width: 100%; text-align: center;">Pelajari Detail TerraGen</a>
+                </div>
+                
+                <div class="simulasi-card" style="text-align: center;">
+                    <div style="width: 100%; height: 250px; background-color: var(--color-stone); border-radius: var(--radius-md); margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-box-open text-primary" style="font-size: 4rem; opacity: 0.5;"></i>
+                    </div>
+                    <h3 class="text-primary" style="font-family: var(--font-sans); margin-bottom: 0.5rem; font-size: 1.8rem;">POC TaburMas</h3>
+                    <p style="color: var(--color-gold); font-weight: 500; margin-bottom: 1rem;">Pupuk Organik Cair</p>
+                    <p style="color: var(--color-text-light); margin-bottom: 2rem;">Solusi nutrisi cair yang mudah diserap tanaman untuk mendukung fase vegetatif dan generatif dengan hasil optimal.</p>
+                    <a href="/produk/poc-taburmas" class="btn btn-outline" style="width: 100%; text-align: center;">Pelajari Detail TaburMas</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Peluang Kemitraan (Ringkasan) -->
+    <section class="bg-ivory pilar-section" id="peluang">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">Peluang Kemitraan Inklusif</h2>
+                <p class="section-subtitle">Bergabung menjadi bagian dari ekosistem distribusi resmi dengan sistem bagi hasil yang adil dan transparan.</p>
+            </div>
+            
+            <div class="benefits-grid" style="margin-bottom: 3rem;">
+                <div class="benefit-tier-card">
+                    <div class="tier-header gold">
+                        <h3>Agen (40% - 50%)</h3>
+                    </div>
+                    <div class="tier-body">
+                        <p style="font-size: 0.95rem; margin-bottom: 1rem;">Hak eksklusif distribusi wilayah (Kabupaten). Margin maksimal dan pasif income dari reseller.</p>
+                    </div>
+                </div>
+                <div class="benefit-tier-card">
+                    <div class="tier-header">
+                        <h3>Reseller (30% - 40%)</h3>
+                    </div>
+                    <div class="tier-body">
+                        <p style="font-size: 0.95rem; margin-bottom: 1rem;">Harga khusus dengan pembelian stok minimal. Bebas jualan online/offline ke seluruh Indonesia.</p>
+                    </div>
+                </div>
+                <div class="benefit-tier-card">
+                    <div class="tier-header" style="background: var(--color-primary-dark);">
+                        <h3>Dropshipper (20% - 30%)</h3>
+                    </div>
+                    <div class="tier-body">
+                        <p style="font-size: 0.95rem; margin-bottom: 1rem;">Mulai bisnis tanpa stok barang. Kami yang urus pengiriman, Anda fokus berjualan.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center">
+                <a href="/kemitraan" class="btn btn-primary" style="padding: 1rem 3rem; font-size: 1.1rem;">Lihat Skema Kemitraan Lengkap</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sosial Proof & Testimoni -->
+    <section class="bg-stone pilar-section">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">Kisah Sukses Petani</h2>
+                <p class="section-subtitle">Dengarkan apa kata mereka yang telah membuktikan langsung kualitas produk NoeSantara.</p>
+            </div>
+            
+            <div class="testimoni-grid">
+                <div class="testimoni-card">
+                    <i class="fas fa-quote-right quote-icon"></i>
+                    <p class="testimoni-text">"Sejak menggunakan TerraGen, tanah di kebun saya jadi lebih gembur dan tanaman tumbuh lebih subur. Cabai lebih lebat, dan hasil panen meningkat tajam."</p>
+                    <div class="testimoni-author">
+                        <img src="/assets/terragen/terragen-testimoni-cabai-1.jpeg" alt="Pak Budi" class="author-img">
+                        <div class="author-info">
+                            <h4>Pak Budi</h4>
+                            <p>Petani Cabai & Jagung</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimoni-card">
+                    <i class="fas fa-quote-right quote-icon"></i>
+                    <p class="testimoni-text">"Lahan bekas pakai bahan kimia sekarang sudah kembali normal berkat aplikasi TerraGen. Pertumbuhan akar tomat sangat kuat, dan tahan cuaca ekstrem."</p>
+                    <div class="testimoni-author">
+                        <img src="/assets/terragen/terragen-testimoni-tomat-1.jpeg" alt="Pak Yanto" class="author-img">
+                        <div class="author-info">
+                            <h4>Pak Yanto</h4>
+                            <p>Petani Tomat</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center" style="margin-top: 3rem;">
+                <a href="/galeri" style="color: var(--color-primary); font-weight: 600; text-decoration: underline;">Lihat Galeri Bukti Lapangan Lengkap &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <div class="container">
+            <h2>Siap Menjadi Bagian Dari Revolusi Pertanian Indonesia?</h2>
+            <p style="font-size: 1.2rem; max-width: 700px; margin: 0 auto; opacity: 0.9;">Ambil peran strategis Anda di wilayah Anda sekarang sebelum posisi keagenan penuh.</p>
+            
+            <div class="cta-btns">
+                <a href="https://wa.me/6281334629468" class="btn btn-outline" style="border-color: white; color: white;" target="_blank"><i class="fab fa-whatsapp"></i> Chat CS NoeSantara</a>
+                <a href="/kemitraan" class="btn btn-primary" style="padding: 1rem 3rem; font-size: 1.1rem;">Daftar Menjadi Mitra Sekarang</a>
+            </div>
+        </div>
+    </section>
+</Layout>

@@ -1,0 +1,87 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Edukasi & Artikel" description="Wawasan seputar pertanian organik, tips aplikasi pupuk, dan strategi bisnis kemitraan dari NoeSantara.">
+    <!-- Hero Edukasi -->
+    <section class="hero" style="min-height: 40vh; align-items: center; padding-top: 8rem; padding-bottom: 3rem;">
+        <div class="container text-center">
+            <h1 style="font-size: 3rem; margin-bottom: 1rem;">Edukasi & Wawasan</h1>
+            <p style="font-size: 1.2rem; max-width: 700px; margin: 0 auto;">Pusat literasi untuk mitra dan petani binaan PT Rumah Sehat Noesantara. Temukan panduan budidaya, tips pertanian berkelanjutan, dan strategi bisnis di sini.</p>
+        </div>
+    </section>
+
+    <!-- Kategori / Filter Placeholder -->
+    <div class="bg-ivory" style="padding: 1rem 0; border-bottom: 1px solid var(--color-stone);">
+        <div class="container">
+            <div style="display: flex; gap: 1rem; overflow-x: auto; padding-bottom: 0.5rem; justify-content: center;">
+                <a href="#" class="btn" style="background: var(--color-primary); color: white; border-radius: 20px; padding: 0.5rem 1.5rem; white-space: nowrap;">Semua Kategori</a>
+                <a href="#" class="btn" style="background: white; color: var(--color-text); border: 1px solid var(--color-stone); border-radius: 20px; padding: 0.5rem 1.5rem; white-space: nowrap;">Kesehatan Tanah</a>
+                <a href="#" class="btn" style="background: white; color: var(--color-text); border: 1px solid var(--color-stone); border-radius: 20px; padding: 0.5rem 1.5rem; white-space: nowrap;">Tips Aplikasi</a>
+                <a href="#" class="btn" style="background: white; color: var(--color-text); border: 1px solid var(--color-stone); border-radius: 20px; padding: 0.5rem 1.5rem; white-space: nowrap;">Peluang Bisnis</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Grid Artikel -->
+    <section class="bg-white pilar-section">
+        <div class="container">
+            <div class="artikel-grid" style="grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 2rem;">
+                
+                <article class="artikel-card" style="box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-radius: var(--radius-md); overflow: hidden; display: flex; flex-direction: column;">
+                    <div class="artikel-img" style="height: 200px; overflow: hidden;">
+                        <img src="/assets/terragen/terragen-keunggulan-1.jpeg" alt="Artikel" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;">
+                    </div>
+                    <div class="artikel-content" style="padding: 1.5rem; flex: 1; display: flex; flex-direction: column;">
+                        <div class="artikel-tag" style="background: rgba(30,81,40,0.1); color: var(--color-primary); padding: 0.3rem 0.8rem; border-radius: 12px; font-size: 0.8rem; font-weight: 600; display: inline-block; margin-bottom: 1rem; align-self: flex-start;">Kesehatan Tanah</div>
+                        <h3 class="artikel-title" style="font-family: var(--font-sans); margin-bottom: 1rem; line-height: 1.4;">Mengapa Kesehatan Tanah Adalah Kunci Panen Melimpah?</h3>
+                        <p style="font-size: 0.95rem; color: var(--color-text-light); line-height: 1.6; flex: 1;">Tanah yang sering terpapar pupuk kimia perlahan akan mengeras dan rusak. Pelajari cara mengembalikannya ke kondisi ideal dengan asam humat.</p>
+                        <a href="#" style="display: inline-block; margin-top: 1rem; color: var(--color-gold); font-weight: 600;">Baca Selengkapnya &rarr;</a>
+                    </div>
+                </article>
+
+                <article class="artikel-card" style="box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-radius: var(--radius-md); overflow: hidden; display: flex; flex-direction: column;">
+                    <div class="artikel-img" style="height: 200px; overflow: hidden;">
+                        <img src="/assets/pelatihan/pelatihan-petani.jpeg" alt="Artikel" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;">
+                    </div>
+                    <div class="artikel-content" style="padding: 1.5rem; flex: 1; display: flex; flex-direction: column;">
+                        <div class="artikel-tag" style="background: rgba(30,81,40,0.1); color: var(--color-primary); padding: 0.3rem 0.8rem; border-radius: 12px; font-size: 0.8rem; font-weight: 600; display: inline-block; margin-bottom: 1rem; align-self: flex-start;">Tips Aplikasi</div>
+                        <h3 class="artikel-title" style="font-family: var(--font-sans); margin-bottom: 1rem; line-height: 1.4;">Cara Paling Efektif Mengaplikasikan TerraGen pada Cabai</h3>
+                        <p style="font-size: 0.95rem; color: var(--color-text-light); line-height: 1.6; flex: 1;">Perbandingan metode kocor dan spray daun untuk mendapatkan pertumbuhan vegetatif maksimal pada fase awal penanaman cabai.</p>
+                        <a href="#" style="display: inline-block; margin-top: 1rem; color: var(--color-gold); font-weight: 600;">Baca Selengkapnya &rarr;</a>
+                    </div>
+                </article>
+
+                <article class="artikel-card" style="box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-radius: var(--radius-md); overflow: hidden; display: flex; flex-direction: column;">
+                    <div class="artikel-img" style="height: 200px; overflow: hidden;">
+                        <img src="/assets/pelatihan/pelatihan-agen-1.jpeg" alt="Artikel" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;">
+                    </div>
+                    <div class="artikel-content" style="padding: 1.5rem; flex: 1; display: flex; flex-direction: column;">
+                        <div class="artikel-tag" style="background: rgba(212,175,55,0.1); color: var(--color-gold); padding: 0.3rem 0.8rem; border-radius: 12px; font-size: 0.8rem; font-weight: 600; display: inline-block; margin-bottom: 1rem; align-self: flex-start;">Peluang Bisnis</div>
+                        <h3 class="artikel-title" style="font-family: var(--font-sans); margin-bottom: 1rem; line-height: 1.4;">Rahasia Pasif Income dari Jaringan Reseller Pertanian</h3>
+                        <p style="font-size: 0.95rem; color: var(--color-text-light); line-height: 1.6; flex: 1;">Panduan lengkap bagi Agen Kabupaten membangun wilayah keagenan dan membina reseller untuk mendapatkan penjualan konsisten.</p>
+                        <a href="#" style="display: inline-block; margin-top: 1rem; color: var(--color-gold); font-weight: 600;">Baca Selengkapnya &rarr;</a>
+                    </div>
+                </article>
+                
+                <!-- More articles can be dynamically generated here in the future -->
+                
+            </div>
+            
+            <div class="text-center" style="margin-top: 3rem;">
+                <!-- Pagination placeholder -->
+                <div style="display: flex; gap: 0.5rem; justify-content: center;">
+                    <span style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: var(--color-primary); color: white; border-radius: var(--radius-sm); font-weight: 600;">1</span>
+                    <a href="#" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: white; color: var(--color-text); border: 1px solid var(--color-stone); border-radius: var(--radius-sm);">2</a>
+                    <a href="#" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: white; color: var(--color-text); border: 1px solid var(--color-stone); border-radius: var(--radius-sm);">&rarr;</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</Layout>
+
+<style>
+    .artikel-card:hover .artikel-img img {
+        transform: scale(1.05);
+    }
+</style>
