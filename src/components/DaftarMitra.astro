@@ -10,12 +10,12 @@
             <table class="mitra-table">
                 <thead>
                     <tr>
-                        <th>No</th>
-                        <th>Nama</th>
-                        <th>Wilayah Kab/Kota</th>
-                        <th>Provinsi</th>
-                        <th>No. HP</th>
-                        <th>Alamat</th>
+                        <th data-sort="no">No <span class="sort-icon"></span></th>
+                        <th data-sort="nama">Nama <span class="sort-icon"></span></th>
+                        <th data-sort="wilayah">Wilayah Kab/Kota <span class="sort-icon"></span></th>
+                        <th data-sort="provinsi">Provinsi <span class="sort-icon"></span></th>
+                        <th data-sort="nohp">No. HP <span class="sort-icon"></span></th>
+                        <th data-sort="alamat">Alamat <span class="sort-icon"></span></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -145,6 +145,37 @@
         font-weight: 600;
         position: sticky;
         top: 0;
+        cursor: pointer;
+        user-select: none;
+        transition: background-color 0.2s;
+    }
+    
+    .mitra-table th:hover {
+        background-color: #e2e8f0;
+    }
+    
+    .sort-icon {
+        display: inline-block;
+        width: 0;
+        height: 0;
+        margin-left: 5px;
+        vertical-align: middle;
+        border-left: 4px solid transparent;
+        border-right: 4px solid transparent;
+        border-top: 4px solid #aaa; /* Default unsorted state */
+        opacity: 0.3;
+    }
+    
+    .sort-asc .sort-icon {
+        border-bottom: 4px solid var(--color-primary-dark);
+        border-top: none;
+        opacity: 1;
+    }
+    
+    .sort-desc .sort-icon {
+        border-top: 4px solid var(--color-primary-dark);
+        border-bottom: none;
+        opacity: 1;
     }
     
     .mitra-table tbody tr:hover {
@@ -172,6 +203,49 @@
                 if (e.target === modalMitra) {
                     modalMitra.style.display = 'none';
                 }
+            });
+        }
+
+        // Sorting Logic
+        const table = document.querySelector('.mitra-table');
+        if (table) {
+            const headers = table.querySelectorAll('th');
+            const tbody = table.querySelector('tbody');
+            
+            headers.forEach((header, index) => {
+                header.addEventListener('click', () => {
+                    const isAsc = header.classList.contains('sort-asc');
+                    
+                    // Clear all sort classes
+                    headers.forEach(h => {
+                        h.classList.remove('sort-asc', 'sort-desc');
+                    });
+                    
+                    // Toggle current sort
+                    header.classList.add(isAsc ? 'sort-desc' : 'sort-asc');
+                    const multiplier = isAsc ? -1 : 1;
+                    
+                    const rows = Array.from(tbody.querySelectorAll('tr'));
+                    
+                    rows.sort((a, b) => {
+                        const aText = a.cells[index].textContent.trim();
+                        const bText = b.cells[index].textContent.trim();
+                        
+                        // Check if numeric (for "No" column)
+                        const aNum = parseFloat(aText);
+                        const bNum = parseFloat(bText);
+                        
+                        if (!isNaN(aNum) && !isNaN(bNum) && aText === aNum.toString()) {
+                            return (aNum - bNum) * multiplier;
+                        }
+                        
+                        return aText.localeCompare(bText) * multiplier;
+                    });
+                    
+                    // Clear and append sorted rows
+                    tbody.innerHTML = '';
+                    rows.forEach(row => tbody.appendChild(row));
+                });
             });
         }
     });
