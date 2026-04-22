@@ -67,4 +67,44 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(el);
     });
 
+    // 4. Image Lightbox
+    const images = document.querySelectorAll('main img');
+    if (images.length > 0) {
+        // Create lightbox HTML
+        const lightbox = document.createElement('div');
+        lightbox.className = 'lightbox-overlay';
+        lightbox.innerHTML = `
+            <span class="lightbox-close">&times;</span>
+            <img class="lightbox-img" src="" alt="Zoomed Image">
+        `;
+        document.body.appendChild(lightbox);
+
+        const lightboxImg = lightbox.querySelector('.lightbox-img');
+        const closeBtn = lightbox.querySelector('.lightbox-close');
+
+        // Close lightbox
+        const closeLightbox = () => {
+            lightbox.classList.remove('active');
+        };
+
+        lightbox.addEventListener('click', (e) => {
+            if (e.target !== lightboxImg) {
+                closeLightbox();
+            }
+        });
+
+        // Add event listeners to images
+        images.forEach(img => {
+            if (!img.classList.contains('no-zoom')) {
+                img.classList.add('zoomable-image');
+                img.title = "Klik gambar untuk memperbesar popup gambar";
+                
+                img.addEventListener('click', () => {
+                    lightboxImg.src = img.src;
+                    lightbox.classList.add('active');
+                });
+            }
+        });
+    }
+
 });
