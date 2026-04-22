@@ -10,12 +10,20 @@
             <table class="mitra-table">
                 <thead>
                     <tr>
-                        <th data-sort="no">No <span class="sort-icon"></span></th>
-                        <th data-sort="nama">Nama <span class="sort-icon"></span></th>
-                        <th data-sort="wilayah">Wilayah Kab/Kota <span class="sort-icon"></span></th>
-                        <th data-sort="provinsi">Provinsi <span class="sort-icon"></span></th>
-                        <th data-sort="nohp">No. HP <span class="sort-icon"></span></th>
-                        <th data-sort="alamat">Alamat <span class="sort-icon"></span></th>
+                        <th data-sort="no" class="sortable">No <span class="sort-icon"></span></th>
+                        <th data-sort="nama" class="sortable">Nama <span class="sort-icon"></span></th>
+                        <th data-sort="wilayah" class="sortable">Wilayah Kab/Kota <span class="sort-icon"></span></th>
+                        <th data-sort="provinsi" class="sortable">Provinsi <span class="sort-icon"></span></th>
+                        <th data-sort="nohp" class="sortable">No. HP <span class="sort-icon"></span></th>
+                        <th data-sort="alamat" class="sortable">Alamat <span class="sort-icon"></span></th>
+                    </tr>
+                    <tr class="filter-row">
+                        <th><input type="text" class="column-filter" data-col="0" placeholder="Cari No"></th>
+                        <th><input type="text" class="column-filter" data-col="1" placeholder="Cari Nama"></th>
+                        <th><input type="text" class="column-filter" data-col="2" placeholder="Cari Wilayah"></th>
+                        <th><input type="text" class="column-filter" data-col="3" placeholder="Cari Provinsi"></th>
+                        <th><input type="text" class="column-filter" data-col="4" placeholder="Cari HP"></th>
+                        <th><input type="text" class="column-filter" data-col="5" placeholder="Cari Alamat"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -82,6 +90,13 @@
                 </tbody>
             </table>
         </div>
+        <div class="pagination-controls">
+            <span id="pageInfo" style="font-size: 0.9rem; color: #555;">Menampilkan data...</span>
+            <div class="pagination-buttons">
+                <button id="btnPrevPage" class="btn btn-outline" style="padding: 0.3rem 0.8rem; font-size: 0.85rem;" disabled>&laquo; Prev</button>
+                <button id="btnNextPage" class="btn btn-outline" style="padding: 0.3rem 0.8rem; font-size: 0.85rem; margin-left: 0.5rem;">Next &raquo;</button>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -145,13 +160,54 @@
         font-weight: 600;
         position: sticky;
         top: 0;
+        z-index: 10;
+    }
+    
+    .mitra-table th.sortable {
         cursor: pointer;
         user-select: none;
         transition: background-color 0.2s;
     }
     
-    .mitra-table th:hover {
+    .mitra-table th.sortable:hover {
         background-color: #e2e8f0;
+    }
+    
+    .mitra-table .filter-row th {
+        top: 45px;
+        padding: 6px 10px;
+        background-color: #f8fafc;
+        cursor: default;
+        z-index: 11;
+        border-bottom: 2px solid #e2e8f0;
+    }
+    
+    .column-filter {
+        width: 100%;
+        padding: 6px 8px;
+        border: 1px solid #cbd5e1;
+        border-radius: 4px;
+        font-size: 0.8rem;
+        outline: none;
+        transition: border-color 0.2s;
+    }
+    
+    .column-filter:focus {
+        border-color: var(--color-primary);
+    }
+    
+    .pagination-controls {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 1.5rem;
+        padding-top: 1rem;
+        border-top: 1px solid #eee;
+    }
+    
+    .pagination-buttons .btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
     }
     
     .sort-icon {
@@ -206,32 +262,74 @@
             });
         }
 
-        // Sorting Logic
+        // Pagination & Sorting & Filtering Logic
         const table = document.querySelector('.mitra-table');
         if (table) {
-            const headers = table.querySelectorAll('th');
-            const tbody = table.querySelector('tbody');
+            let allRows = [];
+            let filteredRows = [];
+            let currentPage = 1;
+            const rowsPerPage = 50;
+            let currentSortCol = -1;
+            let isAsc = true;
             
-            headers.forEach((header, index) => {
+            const tbody = table.querySelector('tbody');
+            const originalTrs = Array.from(tbody.querySelectorAll('tr'));
+            
+            // Extract data for easier manipulation
+            allRows = originalTrs.map(tr => {
+                const cells = Array.from(tr.querySelectorAll('td'));
+                return {
+                    element: tr,
+                    data: cells.map(td => td.textContent.trim())
+                };
+            });
+            filteredRows = [...allRows];
+            
+            const renderTable = () => {
+                const start = (currentPage - 1) * rowsPerPage;
+                const end = start + rowsPerPage;
+                const pageRows = filteredRows.slice(start, end);
+                
+                tbody.innerHTML = '';
+                pageRows.forEach(row => tbody.appendChild(row.element));
+                
+                // Update pagination info
+                const pageInfo = document.getElementById('pageInfo');
+                const btnPrev = document.getElementById('btnPrevPage');
+                const btnNext = document.getElementById('btnNextPage');
+                
+                if (pageInfo) {
+                    const actualEnd = Math.min(end, filteredRows.length);
+                    const total = filteredRows.length;
+                    pageInfo.textContent = `Menampilkan ${total === 0 ? 0 : start + 1}-${actualEnd} dari ${total}`;
+                }
+                
+                if (btnPrev) btnPrev.disabled = currentPage === 1;
+                if (btnNext) btnNext.disabled = end >= filteredRows.length;
+            };
+            
+            const sortHeaders = table.querySelectorAll('th.sortable');
+            const filterInputs = table.querySelectorAll('.column-filter');
+            
+            // Sorting Logic
+            sortHeaders.forEach((header, index) => {
                 header.addEventListener('click', () => {
-                    const isAsc = header.classList.contains('sort-asc');
+                    if (currentSortCol === index) {
+                        isAsc = !isAsc;
+                    } else {
+                        currentSortCol = index;
+                        isAsc = true;
+                    }
                     
-                    // Clear all sort classes
-                    headers.forEach(h => {
-                        h.classList.remove('sort-asc', 'sort-desc');
-                    });
+                    sortHeaders.forEach(h => h.classList.remove('sort-asc', 'sort-desc'));
+                    header.classList.add(isAsc ? 'sort-asc' : 'sort-desc');
                     
-                    // Toggle current sort
-                    header.classList.add(isAsc ? 'sort-desc' : 'sort-asc');
-                    const multiplier = isAsc ? -1 : 1;
+                    const multiplier = isAsc ? 1 : -1;
                     
-                    const rows = Array.from(tbody.querySelectorAll('tr'));
-                    
-                    rows.sort((a, b) => {
-                        const aText = a.cells[index].textContent.trim();
-                        const bText = b.cells[index].textContent.trim();
+                    filteredRows.sort((a, b) => {
+                        const aText = a.data[index];
+                        const bText = b.data[index];
                         
-                        // Check if numeric (for "No" column)
                         const aNum = parseFloat(aText);
                         const bNum = parseFloat(bText);
                         
@@ -242,11 +340,66 @@
                         return aText.localeCompare(bText) * multiplier;
                     });
                     
-                    // Clear and append sorted rows
-                    tbody.innerHTML = '';
-                    rows.forEach(row => tbody.appendChild(row));
+                    currentPage = 1;
+                    renderTable();
                 });
             });
+            
+            // Filter Logic
+            filterInputs.forEach(input => {
+                input.addEventListener('input', () => {
+                    const filters = Array.from(filterInputs).map(inp => ({
+                        col: parseInt(inp.dataset.col),
+                        val: inp.value.toLowerCase()
+                    })).filter(f => f.val.length > 0);
+                    
+                    filteredRows = allRows.filter(row => {
+                        return filters.every(f => row.data[f.col].toLowerCase().includes(f.val));
+                    });
+                    
+                    if (currentSortCol !== -1) {
+                        const multiplier = isAsc ? 1 : -1;
+                        filteredRows.sort((a, b) => {
+                            const aText = a.data[currentSortCol];
+                            const bText = b.data[currentSortCol];
+                            const aNum = parseFloat(aText);
+                            const bNum = parseFloat(bText);
+                            if (!isNaN(aNum) && !isNaN(bNum) && aText === aNum.toString()) {
+                                return (aNum - bNum) * multiplier;
+                            }
+                            return aText.localeCompare(bText) * multiplier;
+                        });
+                    }
+                    
+                    currentPage = 1;
+                    renderTable();
+                });
+            });
+            
+            // Pagination Listeners
+            const btnPrev = document.getElementById('btnPrevPage');
+            const btnNext = document.getElementById('btnNextPage');
+            
+            if (btnPrev) {
+                btnPrev.addEventListener('click', () => {
+                    if (currentPage > 1) {
+                        currentPage--;
+                        renderTable();
+                    }
+                });
+            }
+            if (btnNext) {
+                btnNext.addEventListener('click', () => {
+                    const totalPages = Math.ceil(filteredRows.length / rowsPerPage);
+                    if (currentPage < totalPages) {
+                        currentPage++;
+                        renderTable();
+                    }
+                });
+            }
+            
+            // Initialize
+            renderTable();
         }
     });
 </script>
