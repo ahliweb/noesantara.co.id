@@ -4,17 +4,17 @@ import Layout from '../../layouts/Layout.astro';
 
 <Layout title="Katalog Produk" description="Solusi pertanian komprehensif dari PT Rumah Sehat Noesantara: TerraGen Pembenah Tanah dan PHC TaburMas Pupuk Hayati Cair.">
     <!-- Hero Produk -->
-    <section class="hero" style="min-height: 50vh; align-items: center; padding-top: 8rem; padding-bottom: 4rem;">
+    <section class="hero product-hero">
         <div class="container text-center">
-            <h1 style="font-size: 3rem; margin-bottom: 1rem;">Solusi Pertanian Inovatif</h1>
-            <p style="font-size: 1.2rem; max-width: 700px; margin: 0 auto;">Kami mengembangkan produk-produk berkualitas tinggi yang diformulasikan khusus untuk memperbaiki unsur hara tanah dan memaksimalkan hasil panen secara berkelanjutan.</p>
+            <h1>Solusi Pertanian Inovatif</h1>
+            <p>Kami mengembangkan produk-produk berkualitas tinggi yang diformulasikan khusus untuk memperbaiki unsur hara tanah dan memaksimalkan hasil panen secara berkelanjutan.</p>
         </div>
     </section>
 
     <!-- Katalog Produk -->
     <section class="bg-white pilar-section">
         <div class="container">
-            <div class="simulasi-grid" style="grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 4rem;">
+            <div class="simulasi-grid">
                 
                 <!-- Produk 1: TerraGen -->
                 <div class="simulasi-card" style="text-align: left; display: flex; flex-direction: column; justify-content: space-between;">
@@ -31,7 +31,7 @@ import Layout from '../../layouts/Layout.astro';
                             <li style="margin-bottom: 0.5rem;"><i class="fas fa-check-circle text-primary" style="margin-right: 0.5rem;"></i> Menetralisir pH tanah ekstrem</li>
                         </ul>
                     </div>
-                    <div style="display: flex; gap: 1rem;">
+                    <div class="flex-group-responsive">
                         <a href="/produk/terragen" class="btn btn-primary" style="flex: 1; text-align: center;">Detail Lengkap</a>
                         <a href="https://wa.me/6281334629468" class="btn btn-outline" style="flex: 1; text-align: center;" target="_blank">Pesan Sekarang</a>
                     </div>
@@ -52,7 +52,7 @@ import Layout from '../../layouts/Layout.astro';
                             <li style="margin-bottom: 0.5rem;"><i class="fas fa-check-circle text-primary" style="margin-right: 0.5rem;"></i> Mencegah kerontokan buah</li>
                         </ul>
                     </div>
-                    <div style="display: flex; gap: 1rem;">
+                    <div class="flex-group-responsive">
                         <a href="/produk/phc-taburmas" class="btn btn-primary" style="flex: 1; text-align: center;">Detail Lengkap</a>
                         <a href="https://wa.me/6281334629468" class="btn btn-outline" style="flex: 1; text-align: center;" target="_blank">Pesan Sekarang</a>
                     </div>
@@ -71,3 +71,26 @@ import Layout from '../../layouts/Layout.astro';
         </div>
     </section>
 </Layout>
+
+<style>
+    .product-hero {
+        min-height: 40vh; 
+        align-items: center; 
+        padding-top: 8rem; 
+        padding-bottom: 3rem;
+    }
+    .simulasi-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
+        gap: 4rem;
+    }
+    @media (max-width: 768px) {
+        .product-hero {
+            padding-top: 6rem;
+        }
+        .simulasi-grid {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+    }
+</style>

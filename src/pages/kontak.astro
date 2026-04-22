@@ -4,16 +4,16 @@ import Layout from '../layouts/Layout.astro';
 
 <Layout title="Hubungi Kami" description="Layanan pelanggan dan pusat informasi PT Rumah Sehat Noesantara. Kami siap membantu kebutuhan kemitraan dan produk Anda.">
     <!-- Hero Kontak -->
-    <section class="hero" style="min-height: 40vh; align-items: center; padding-top: 8rem; padding-bottom: 3rem;">
+    <section class="hero contact-hero">
         <div class="container text-center">
-            <h1 style="font-size: 3rem; margin-bottom: 1rem;">Hubungi Kami</h1>
-            <p style="font-size: 1.2rem; max-width: 700px; margin: 0 auto;">Punya pertanyaan seputar produk atau peluang kemitraan? Tim PT Rumah Sehat Noesantara siap melayani Anda.</p>
+            <h1>Hubungi Kami</h1>
+            <p>Punya pertanyaan seputar produk atau peluang kemitraan? Tim PT Rumah Sehat Noesantara siap melayani Anda.</p>
         </div>
     </section>
 
     <section class="bg-white pilar-section">
         <div class="container">
-            <div style="display: flex; flex-wrap: wrap; gap: 4rem;">
+            <div class="flex-group-responsive" style="gap: 4rem;">
                 
                 <!-- Info Kontak -->
                 <div style="flex: 1; min-width: 300px;">
@@ -66,7 +66,7 @@ import Layout from '../layouts/Layout.astro';
                     <div style="background: var(--color-ivory); padding: 3rem; border-radius: var(--radius-lg);">
                         <h3 style="font-family: var(--font-sans); margin-bottom: 1.5rem; color: var(--color-primary-dark);">Tinggalkan Pesan</h3>
                         <form action="#" method="POST">
-                            <div style="display: flex; gap: 1rem; margin-bottom: 1rem;">
+                            <div class="flex-group-responsive" style="margin-bottom: 1rem;">
                                 <div style="flex: 1;">
                                     <label for="name" style="display: block; margin-bottom: 0.5rem; font-size: 0.9rem; color: var(--color-text-light);">Nama Lengkap</label>
                                     <input type="text" id="name" style="width: 100%; padding: 0.8rem; border: 1px solid var(--color-stone); border-radius: var(--radius-sm); font-family: inherit;">
@@ -97,3 +97,17 @@ import Layout from '../layouts/Layout.astro';
         </div>
     </section>
 </Layout>
+
+<style>
+    .contact-hero {
+        min-height: 40vh; 
+        align-items: center; 
+        padding-top: 8rem; 
+        padding-bottom: 3rem;
+    }
+    @media (max-width: 768px) {
+        .contact-hero {
+            padding-top: 6rem;
+        }
+    }
+</style>

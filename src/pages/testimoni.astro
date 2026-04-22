@@ -3,10 +3,10 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="Testimoni" description="Kumpulan testimoni keberhasilan petani mitra PT Rumah Sehat Noesantara dalam menggunakan produk TerraGen dan PHC TaburMas.">
-    <section class="hero" style="min-height: 40vh; align-items: center; padding-top: 8rem; padding-bottom: 3rem;">
+    <section class="hero testimony-hero">
         <div class="container text-center">
-            <h1 style="font-size: 3rem; margin-bottom: 1rem;">Testimoni Petani</h1>
-            <p style="font-size: 1.2rem; max-width: 700px; margin: 0 auto;">Mendengarkan langsung dari para pahlawan pangan yang telah merasakan keunggulan produk inovasi PT Rumah Sehat Noesantara.</p>
+            <h1>Testimoni Petani</h1>
+            <p>Mendengarkan langsung dari para pahlawan pangan yang telah merasakan keunggulan produk inovasi PT Rumah Sehat Noesantara.</p>
         </div>
     </section>
 
@@ -110,5 +110,16 @@ import Layout from '../layouts/Layout.astro';
 <style>
     .gallery-item:hover img {
         transform: scale(1.05);
+    }
+    .testimony-hero {
+        min-height: 40vh; 
+        align-items: center; 
+        padding-top: 8rem; 
+        padding-bottom: 3rem;
+    }
+    @media (max-width: 768px) {
+        .testimony-hero {
+            padding-top: 6rem;
+        }
     }
 </style>

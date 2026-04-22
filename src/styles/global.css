@@ -256,6 +256,12 @@ img {
   color: var(--color-primary-dark);
 }
 
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+}
+
 .hero h1 span {
   color: var(--color-primary);
 }
@@ -269,6 +275,18 @@ img {
 .hero-btns {
   display: flex;
   gap: 1rem;
+}
+
+.flex-group-responsive {
+  display: flex;
+  gap: 1rem;
+}
+
+@media (max-width: 768px) {
+  .hero-btns, .flex-group-responsive {
+    flex-direction: column;
+    align-items: stretch;
+  }
 }
 
 /* Pilar Bisnis */
@@ -918,8 +936,40 @@ img {
     padding-right: 0;
   }
   
+  .hero .container {
+    flex-direction: column;
+    text-align: center;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .hero-content {
+    width: 100%;
+    padding-right: 0;
+    margin-bottom: 2rem;
+  }
+
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+
+  .hero p {
+    font-size: 1.1rem;
+    max-width: 100%;
+  }
+
   .hero-btns {
+    flex-direction: column;
+    align-items: stretch;
     justify-content: center;
+  }
+
+  .wa-float {
+    width: 50px;
+    height: 50px;
+    bottom: 20px;
+    right: 20px;
+    font-size: 28px;
   }
   
   .terragen-content, .aplikasi-split {

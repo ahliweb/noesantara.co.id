@@ -4,10 +4,10 @@ import Layout from '../layouts/Layout.astro';
 
 <Layout title="Edukasi & Artikel" description="Wawasan seputar pertanian organik, tips aplikasi pupuk, dan strategi bisnis kemitraan dari NoeSantara.">
     <!-- Hero Edukasi -->
-    <section class="hero" style="min-height: 40vh; align-items: center; padding-top: 8rem; padding-bottom: 3rem;">
+    <section class="hero article-hero">
         <div class="container text-center">
-            <h1 style="font-size: 3rem; margin-bottom: 1rem;">Edukasi & Wawasan</h1>
-            <p style="font-size: 1.2rem; max-width: 700px; margin: 0 auto;">Pusat literasi untuk mitra dan petani binaan PT Rumah Sehat Noesantara. Temukan panduan budidaya, tips pertanian berkelanjutan, dan strategi bisnis di sini.</p>
+            <h1>Edukasi & Wawasan</h1>
+            <p>Pusat literasi untuk mitra dan petani binaan PT Rumah Sehat Noesantara. Temukan panduan budidaya, tips pertanian berkelanjutan, dan strategi bisnis di sini.</p>
         </div>
     </section>
 
@@ -83,5 +83,16 @@ import Layout from '../layouts/Layout.astro';
 <style>
     .artikel-card:hover .artikel-img img {
         transform: scale(1.05);
+    }
+    .article-hero {
+        min-height: 40vh; 
+        align-items: center; 
+        padding-top: 8rem; 
+        padding-bottom: 3rem;
+    }
+    @media (max-width: 768px) {
+        .article-hero {
+            padding-top: 6rem;
+        }
     }
 </style>

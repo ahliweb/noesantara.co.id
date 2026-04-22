@@ -4,20 +4,20 @@ import Layout from '../../layouts/Layout.astro';
 
 <Layout title="TerraGen - Pembenah Tanah Premium" description="TerraGen: Potassium Humate Plus pembenah tanah premium untuk mengembalikan kesuburan tanah dan memaksimalkan panen." image="/assets/produk-terragen/terragen-produk-1.jpeg">
     <!-- Hero Detail Produk -->
-    <section class="bg-stone" style="padding-top: 8rem; padding-bottom: 4rem;">
+    <section class="bg-stone product-detail-hero">
         <div class="container">
-            <div style="display: flex; flex-wrap: wrap; gap: 4rem; align-items: center;">
+            <div class="product-detail-flex">
                 <div style="flex: 1; min-width: 300px;">
                     <img src="/assets/produk-terragen/terragen-produk-1.jpeg" alt="Kemasan TerraGen" style="width: 100%; border-radius: var(--radius-lg); box-shadow: 0 20px 40px rgba(0,0,0,0.2);">
                 </div>
-                <div style="flex: 1.5; min-width: 300px;">
-                    <div style="display: inline-block; background: var(--color-primary); color: white; padding: 0.3rem 1rem; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 1rem;">Pembenah Tanah</div>
-                    <h1 class="text-primary" style="font-size: 3.5rem; margin-bottom: 0.5rem; font-family: var(--font-sans);">TerraGen</h1>
-                    <h2 class="text-gold" style="font-family: var(--font-sans); margin-bottom: 2rem; font-size: 1.8rem;">Potassium Humate Plus</h2>
+                <div class="product-detail-info">
+                    <div class="product-badge">Pembenah Tanah</div>
+                    <h1>TerraGen</h1>
+                    <h2 class="text-gold">Potassium Humate Plus</h2>
                     <p style="font-size: 1.1rem; line-height: 1.8; color: var(--color-text); margin-bottom: 2rem;">
                         Solusi terbaik untuk tanah yang keras dan tandus akibat paparan bahan kimia sintetis bertahun-tahun. TerraGen diformulasikan khusus untuk memperbaiki sifat fisik, kimia, dan biologi tanah sehingga akar tanaman dapat bernapas bebas dan menyerap nutrisi dengan maksimal.
                     </p>
-                    <div style="display: flex; gap: 1rem;">
+                    <div class="flex-group-responsive">
                         <a href="https://wa.me/6281334629468?text=Halo%20saya%20ingin%20pesan%20TerraGen" class="btn btn-primary" target="_blank"><i class="fab fa-whatsapp"></i> Pesan TerraGen Sekarang</a>
                         <a href="#kandungan" class="btn btn-outline">Lihat Spesifikasi</a>
                     </div>
@@ -89,7 +89,7 @@ import Layout from '../../layouts/Layout.astro';
                 <p class="section-subtitle" style="color: rgba(255,255,255,0.8);">Sangat larut di air dan tidak menyumbat nozzle sprayer.</p>
             </div>
             
-            <div class="aplikasi-split" style="background: rgba(0,0,0,0.2); padding: 3rem; border-radius: var(--radius-lg);">
+            <div class="aplikasi-split">
                 <div class="aplikasi-methods">
                     <div class="method-card" style="background: white; color: var(--color-text);">
                         <h3><i class="fas fa-fill-drip text-primary"></i> 1. Kocor (Soil Application)</h3>
@@ -165,3 +165,66 @@ import Layout from '../../layouts/Layout.astro';
         </div>
     </section>
 </Layout>
+
+<style>
+    .product-detail-hero {
+        padding-top: 8rem; 
+        padding-bottom: 4rem;
+    }
+    .product-detail-flex {
+        display: flex; 
+        flex-wrap: wrap; 
+        gap: 4rem; 
+        align-items: center;
+    }
+    .product-detail-info h1 {
+        font-size: 3.5rem; 
+        margin-bottom: 0.5rem; 
+        font-family: var(--font-sans);
+        color: var(--color-primary);
+    }
+    .product-detail-info h2 {
+        font-family: var(--font-sans); 
+        margin-bottom: 2rem; 
+        font-size: 1.8rem;
+    }
+    .product-badge {
+        display: inline-block; 
+        background: var(--color-primary); 
+        color: white; 
+        padding: 0.3rem 1rem; 
+        border-radius: 20px; 
+        font-size: 0.85rem; 
+        font-weight: 600; 
+        margin-bottom: 1rem;
+    }
+    .aplikasi-split {
+        background: rgba(0,0,0,0.2); 
+        padding: 3rem; 
+        border-radius: var(--radius-lg);
+        display: flex;
+        gap: 3rem;
+        align-items: center;
+    }
+
+    @media (max-width: 768px) {
+        .product-detail-hero {
+            padding-top: 6rem;
+            padding-bottom: 2rem;
+        }
+        .product-detail-flex {
+            gap: 2rem;
+        }
+        .product-detail-info h1 {
+            font-size: 2.5rem;
+        }
+        .product-detail-info h2 {
+            font-size: 1.4rem;
+        }
+        .aplikasi-split {
+            flex-direction: column;
+            padding: 1.5rem;
+            gap: 2rem;
+        }
+    }
+</style>

@@ -4,20 +4,20 @@ import Layout from '../../layouts/Layout.astro';
 
 <Layout title="PHC TaburMas - Pupuk Hayati Cair" description="PHC TaburMas: Pupuk Hayati Cair inovatif dengan penyerapan instan untuk merangsang tunas, bunga, dan mencegah kerontokan buah." image="/assets/produk-phc-taburmas/produk-phc-taburmas-1.jpeg">
     <!-- Hero Detail Produk -->
-    <section class="bg-stone" style="padding-top: 8rem; padding-bottom: 4rem;">
+    <section class="bg-stone product-detail-hero">
         <div class="container">
-            <div style="display: flex; flex-wrap: wrap; gap: 4rem; align-items: center; flex-direction: row-reverse;">
+            <div class="product-detail-flex" style="flex-direction: row-reverse;">
                 <div style="flex: 1; min-width: 300px; text-align: center;">
                     <img src="/assets/produk-phc-taburmas/produk-phc-taburmas-1.jpeg" alt="Kemasan PHC TaburMas" style="width: 100%; border-radius: var(--radius-lg); box-shadow: 0 20px 40px rgba(0,0,0,0.2);">
                 </div>
-                <div style="flex: 1.5; min-width: 300px;">
-                    <div style="display: inline-block; background: var(--color-gold); color: white; padding: 0.3rem 1rem; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 1rem;">Pupuk Hayati Cair</div>
-                    <h1 class="text-primary" style="font-size: 3.5rem; margin-bottom: 0.5rem; font-family: var(--font-sans);">PHC TaburMas</h1>
-                    <h2 class="text-gold" style="font-family: var(--font-sans); margin-bottom: 2rem; font-size: 1.8rem;">Nutrisi Instan Multiguna</h2>
+                <div class="product-detail-info">
+                    <div class="product-badge" style="background: var(--color-gold);">Pupuk Hayati Cair</div>
+                    <h1>PHC TaburMas</h1>
+                    <h2 class="text-gold">Nutrisi Instan Multiguna</h2>
                     <p style="font-size: 1.1rem; line-height: 1.8; color: var(--color-text); margin-bottom: 2rem;">
                         PHC TaburMas dirancang dengan teknologi *fast-release* (cepat serap) yang memungkinkan nutrisi makro dan mikro langsung dimanfaatkan oleh stomata daun dan rambut akar dalam hitungan jam. Solusi pendorong vitalitas tanaman di segala fase.
                     </p>
-                    <div style="display: flex; gap: 1rem;">
+                    <div class="flex-group-responsive">
                         <a href="https://wa.me/6281334629468?text=Halo%20saya%20ingin%20pesan%20PHC%20TaburMas" class="btn btn-primary" target="_blank"><i class="fab fa-whatsapp"></i> Pesan TaburMas Sekarang</a>
                         <a href="#manfaat" class="btn btn-outline">Lihat Manfaat</a>
                     </div>
@@ -123,3 +123,53 @@ import Layout from '../../layouts/Layout.astro';
         </div>
     </section>
 </Layout>
+
+<style>
+    .product-detail-hero {
+        padding-top: 8rem; 
+        padding-bottom: 4rem;
+    }
+    .product-detail-flex {
+        display: flex; 
+        flex-wrap: wrap; 
+        gap: 4rem; 
+        align-items: center;
+    }
+    .product-detail-info h1 {
+        font-size: 3.5rem; 
+        margin-bottom: 0.5rem; 
+        font-family: var(--font-sans);
+        color: var(--color-primary);
+    }
+    .product-detail-info h2 {
+        font-family: var(--font-sans); 
+        margin-bottom: 2rem; 
+        font-size: 1.8rem;
+    }
+    .product-badge {
+        display: inline-block; 
+        color: white; 
+        padding: 0.3rem 1rem; 
+        border-radius: 20px; 
+        font-size: 0.85rem; 
+        font-weight: 600; 
+        margin-bottom: 1rem;
+    }
+
+    @media (max-width: 768px) {
+        .product-detail-hero {
+            padding-top: 6rem;
+            padding-bottom: 2rem;
+        }
+        .product-detail-flex {
+            gap: 2rem;
+            flex-direction: column-reverse !important;
+        }
+        .product-detail-info h1 {
+            font-size: 2.5rem;
+        }
+        .product-detail-info h2 {
+            font-size: 1.4rem;
+        }
+    }
+</style>
