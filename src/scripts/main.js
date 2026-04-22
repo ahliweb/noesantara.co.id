@@ -14,28 +14,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 2. Mobile Menu Toggle
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const closeMenuBtn = document.getElementById('closeMenuBtn');
+    const navOverlay = document.getElementById('navOverlay');
     const navLinks = document.getElementById('navLinks');
     
-    mobileMenuBtn.addEventListener('click', () => {
+    const toggleMenu = () => {
         navLinks.classList.toggle('active');
-        const icon = mobileMenuBtn.querySelector('i');
-        if (navLinks.classList.contains('active')) {
-            icon.classList.remove('fa-bars');
-            icon.classList.add('fa-times');
-        } else {
-            icon.classList.remove('fa-times');
-            icon.classList.add('fa-bars');
-        }
-    });
+        navOverlay.classList.toggle('active');
+        document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
+    };
+
+    mobileMenuBtn.addEventListener('click', toggleMenu);
+    closeMenuBtn.addEventListener('click', toggleMenu);
+    navOverlay.addEventListener('click', toggleMenu);
 
     // Close mobile menu when a link is clicked
     const links = navLinks.querySelectorAll('a');
     links.forEach(link => {
         link.addEventListener('click', () => {
-            navLinks.classList.remove('active');
-            const icon = mobileMenuBtn.querySelector('i');
-            icon.classList.remove('fa-times');
-            icon.classList.add('fa-bars');
+            if (navLinks.classList.contains('active')) {
+                toggleMenu();
+            }
         });
     });
 

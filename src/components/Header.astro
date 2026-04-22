@@ -6,7 +6,14 @@ const currentPath = Astro.url.pathname;
         <a href="/" class="logo">
             <img src="/assets/logo-noesantara.png" alt="PT Rumah Sehat Noesantara Logo">
         </a>
+        <div class="nav-overlay" id="navOverlay"></div>
         <nav class="nav-links" id="navLinks">
+            <div class="mobile-menu-header">
+                <a href="/" class="logo">
+                    <img src="/assets/logo-noesantara.png" alt="PT Rumah Sehat Noesantara Logo">
+                </a>
+                <button class="close-menu" id="closeMenuBtn"><i class="fas fa-times"></i></button>
+            </div>
             <a href="/" class={currentPath === "/" ? "active" : ""}>Beranda</a>
             <a href="/perusahaan" class={currentPath.startsWith("/perusahaan") ? "active" : ""}>Perusahaan</a>
             
@@ -23,7 +30,16 @@ const currentPath = Astro.url.pathname;
             <a href="/testimoni" class={currentPath.startsWith("/testimoni") ? "active" : ""}>Testimoni</a>
             <a href="/artikel" class={currentPath.startsWith("/artikel") ? "active" : ""}>Artikel</a>
             <a href="/kontak" class={currentPath.startsWith("/kontak") ? "active" : ""}>Kontak</a>
-            <a href="/kemitraan" class="btn btn-primary" style="margin-left: 1rem;">Daftar Mitra</a>
+            
+            <div class="mobile-menu-footer">
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+                <p>info@noesantara.co.id</p>
+                <a href="/kemitraan" class="btn btn-primary">Daftar Mitra</a>
+            </div>
         </nav>
         <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle Menu">
             <i class="fas fa-bars"></i>
