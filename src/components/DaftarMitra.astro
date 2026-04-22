@@ -1,0 +1,178 @@
+---
+// Daftar Mitra Component
+---
+
+<div id="modalMitra" class="modal-overlay" style="display: none;">
+    <div class="modal-content" style="max-width: 900px; width: 95%;">
+        <span class="modal-close" id="closeMitra">&times;</span>
+        <h2 style="margin-bottom: 1.5rem; color: var(--color-primary-dark); font-family: var(--font-sans);">Daftar Mitra Resmi NoeSantara</h2>
+        <div class="table-responsive">
+            <table class="mitra-table">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Nama</th>
+                        <th>Wilayah Kab/Kota</th>
+                        <th>Provinsi</th>
+                        <th>No. HP</th>
+                        <th>Alamat</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>1</td><td>Sudarno</td><td>Kediri</td><td>Jawa Timur</td><td>085790927269</td><td>dorok manggis puncu Kediri Jatim</td></tr>
+                    <tr><td>2</td><td>Wa Sahia</td><td>Muna Barat</td><td>Sulawesi Tenggara</td><td>081355467369</td><td>jalan Poros Lawa-Matakidi desa Watumela kec. Lawa kabupaten muna barat Sulawesi Tenggara</td></tr>
+                    <tr><td>3</td><td>Arif Wibisono</td><td>Probolinggo</td><td>Jawa Timur</td><td>081231335573</td><td>Dsn Krajan I RT 01 RW 01 desa Tegal Mojo Kec Tegal Siwalan Kab Probolinggo Jawa Timur</td></tr>
+                    <tr><td>4</td><td>Endang Purwaningsih</td><td>pasuruan</td><td>Jawa Timur</td><td>085606181780</td><td>Lingk. Prajaya rt 01 rw 02 kel bayeman kec gondangdawetan kab pasuruan jawa timur</td></tr>
+                    <tr><td>5</td><td>Didik Sugiono</td><td>Nganjuk</td><td>Jawa Timur</td><td>082261337688</td><td>Gg Arwana M.45 Perum Tembarak Ds Tembarak Kec Kertosono Kab Nganjuk Jawa Timur</td></tr>
+                    <tr><td>6</td><td>Rudi Santoso</td><td>Lamongan</td><td>Jawa Timur</td><td>085816569993</td><td>Sambikerep RT 001 RW 001 Desa Botoputih KecTikung Kab Lamongan Jawa Timur</td></tr>
+                    <tr><td>7</td><td>Andri Askapari</td><td>Muara Enim</td><td>Sumatera Selatan</td><td>08980837605</td><td>Desa Pinang Banjar Kec Gelumbang Kab Muara Enim Sumsel</td></tr>
+                    <tr><td>8</td><td>Nasrul</td><td>Enrekang</td><td>Sulawesi Selatan</td><td>085331374440</td><td>Jalan Pahlawan Dusun Bampu Desa Karueng Kabupaten Enkerang Sulawesi Selatan</td></tr>
+                    <tr><td>9</td><td>sutrisno</td><td>Bojonegoro</td><td>Jawa Timur</td><td>08223279977</td><td>Dusun Malebo Desa Simorejo Kecamatan Kanor Kabupaten Bojonegoro Jawa Timur</td></tr>
+                    <tr><td>10</td><td>Ns. Lilies</td><td>Sidoarjo</td><td>Jawa Timur</td><td>081231944470</td><td>Mutiara Regecy A2/58 Sidoarjo Desa Banjarbendo RT 37 RW 16 Sidoarjo Jawa Timur</td></tr>
+                    <tr><td>11</td><td>Dewi Setyo Ambarsari</td><td>Ngawi</td><td>Jawa Timur</td><td>08123137014</td><td>Jalan Nangka 2 No. 10 Geluran Taman Sidoarjo Alamat Agen Dian/ Mamik Sutjipto Jalan Semeru No. 2 RT 10 RW 01 Desa Legundi Kec. Karangjati Kab. Ngawi</td></tr>
+                    <tr><td>12</td><td>Wajilan</td><td>Kutai Kerta Negara</td><td>Kalimantan Timur</td><td>082153659055</td><td>Jalan Padat Karya Gg. Bukit Lestari No. 70 RT 073 RW 000 Desa Sungai Kunjang Kota Samarinda Provinsi Kalimantan Timur</td></tr>
+                    <tr><td>13</td><td>Heri Saehuri</td><td>Pandeglang</td><td>Banten</td><td>081400749039</td><td>Kp Bonghas Lebak RT 001 RW 004 Pandeglang Banten</td></tr>
+                    <tr><td>14</td><td>Jainudin Karim SE</td><td>Sampit</td><td>Kalimantan Tengah</td><td>081225915174</td><td>Jalan Rambutan 1 Lingkar Selatan Kel. MB Hlir Kec. MB Ketapang Kab. Kotawaringin Timur Sampit Kalteng</td></tr>
+                    <tr><td>15</td><td>Mujo</td><td>Demak</td><td>Jawa Tengah</td><td>088221709102</td><td>Tlogorejo RT 001 RW 005 Kec. Guntur Kab. Demak Jawa Tengah</td></tr>
+                    <tr><td>16</td><td>Rikwan Sinulingga</td><td>Karo</td><td>Sumatera Utara</td><td>082168288507</td><td>Desa Nangbelawan Kec. Simpang Empat Kab. Karo Sumatera Utara</td></tr>
+                    <tr><td>17</td><td>Haris Faridi</td><td>Tapin</td><td>Kalimantan Selatan</td><td>082151712887</td><td>Jalan Gubernur Aberani Sulaiman RT 011 RW 002 Kel Rantau Kiwa Kec. Tapin Utara Kab. Tapin Kalsel</td></tr>
+                    <tr><td>18</td><td>Isa Ansori</td><td>Gresik</td><td>Jawa Timur</td><td>085648926052</td><td>Banjaran RT 004 RW 001 Driyorejo Gresik Jawa Timur</td></tr>
+                    <tr><td>19</td><td>Zayyin Zainal Abidin</td><td>Garut</td><td>Jawa Barat</td><td>085755554950</td><td>Ponpes Fauzan Pusat Desa Kec Sukaresmi Kab Garut Jawa Barat</td></tr>
+                    <tr><td>20</td><td>Agus Setyono</td><td>Karanganyar</td><td>Jawa Tengah</td><td>081327550021</td><td>Gang Melati No. 21, Pokoh Baru RT 09 RW 06, Ngijo, Tasikmadu, Karanganyar, Jawa Tengah</td></tr>
+                    <tr><td>21</td><td>Supriyanto</td><td>Sragen</td><td>Jawa Tengah</td><td>081228579519</td><td>Karas RT 09 Desa Puro Kec. Karangmalang Kab. Sragen, Jawa Tengah</td></tr>
+                    <tr><td>22</td><td>Masduki</td><td>Kebumen</td><td>Jawa Tengah</td><td>081226679109</td><td>Alamat Agen (Al Mecca Shop/Masrufi) Jalan Belimbing RT 05 RW 06 No. 70 Pejagoan Kec. Pejagoan Kab. Kebumen Jawa Tengah</td></tr>
+                    <tr><td>23</td><td>Dony Yance</td><td>Samarinda</td><td>Kalimantan Timur</td><td>081253288479</td><td>Jalan Lempake Jaya RT 12 Samarinda Kalimantan Timur</td></tr>
+                    <tr><td>24</td><td>Ramon Lasander</td><td>Kep Sangihe</td><td>Sulawesi Utara</td><td>085216996052</td><td>Kel. Santiago Kec. Tahuna Kab. Kep Sangihe Sulawesi Utara</td></tr>
+                    <tr><td>25</td><td>Hamrin Malane</td><td>Banggai Laut</td><td>Sulawesi Tengah</td><td>085184857382</td><td>Desa Lampa Kec. Banggai Kab. Banggai Laut Sulawesi Tengah</td></tr>
+                    <tr><td>26</td><td>Taufan Hendra Tandri</td><td>Tojo Una Una</td><td>Sulawesi Tengah</td><td>081227299009</td><td>BTN FAT Residence Blok L.37 Desa Sansarino Kec. Ampana Kab. Tojo Una Una Sulawesi Tengah</td></tr>
+                    <tr><td>27</td><td>Aferili Harita / April</td><td>Nias Selatan</td><td>Sumatera Utara</td><td>08128224265</td><td>Jalan Pelita No. 02 Kel. Teluk Dalam Kec. Teluk Dalam Kab. Nias Selatan Sumatera Utara</td></tr>
+                    <tr><td>28</td><td>Sugiyanto</td><td>Kota Blitar</td><td>Jawa Timur</td><td>082231887898</td><td>Jalan Merdeka No. 52 Kota Blitar Jawa Timur</td></tr>
+                    <tr><td>29</td><td>Indriyani</td><td>Lampung Timur</td><td>Lampung</td><td>082294483507</td><td>Psr Sumber Gede 56 Kec. Sekampung Kab Lampung Timur Provinsi lampung</td></tr>
+                    <tr><td>30</td><td>Anang Rafik Setiyanto</td><td>Boyolali</td><td>Jawa Tengah</td><td>085647019945</td><td>Gosono RT 03 RW 02 Desa Gosono, Kec. Wonosegoro Kab. Boyolali Jawa Tengah</td></tr>
+                    <tr><td>31</td><td>M. Fachrudin Nur</td><td>Sukamara</td><td>Kalimantan Tengah</td><td>081348209913</td><td>Jl Reginal No. 75 RT 01 RW 03 Kel. Mendawai Kec. Sukamara Kab. Sukamara Kalimantan Tengah</td></tr>
+                    <tr><td>32</td><td>Heri Soeryono Prabowo</td><td>Madiun</td><td>Jawa Timur</td><td>08123579327</td><td>Alamat Agen Sugiatun Ds Mojorayung RT 26 RW 07 Kec. Wungu Kab. Madiun Jawa Timur Kode Pos 63181 (085736042040)</td></tr>
+                    <tr><td>33</td><td>Asnawi</td><td>Hulu Sungai Selatan</td><td>Kalimantan Selatan</td><td>082153922322</td><td>Jl. A. Yani Gg.Baturahim RT 09 RW 04 Kel. Kandangan Barat Kec. Kandangan Kab. Hulu Sungai Selatan Kalimantan Selatan</td></tr>
+                    <tr><td>34</td><td>R Fithoni</td><td>Lubuklinggau</td><td>Sumatera Selatan</td><td>081373102968</td><td>Jl. Tanara Paviliun Bandara 1 RT 04 Blok D No. 04 Kel. Air Kuti Kec. Lubuklinggau Timur 1 Kota Lubuklinggau Sumatera Selatan</td></tr>
+                    <tr><td>35</td><td>Agus Maliki</td><td>Oku Timur</td><td>Sumatera Selatan</td><td>08154079354</td><td>Jl.Tugu Harum RT 01 Rw 01 Kel. Tugu Harum Kec. Belitang Madang Raya Kab. Ogan Komering Ulu Timur Sumatera Selatan 32362</td></tr>
+                    <tr><td>36</td><td>Nana Sudiana</td><td>Bekasi</td><td>Jawa Barat</td><td>082215440642</td><td>Perum Bukit Indah Pratama Blok AG 1 No. 15 RT 02 RW 16 Desa Sukadami Kec. Cikarang Selatan Kab. Bekasi Jawa Barat</td></tr>
+                    <tr><td>37</td><td>Maskinah</td><td>Kuningan</td><td>Jawa Barat</td><td>082215440642</td><td>RT 28 RW 03 Dsn Jatinunggal Karangtawang Kab. Kuningan Jawa Barat</td></tr>
+                    <tr><td>38</td><td>Edi Suprapto</td><td>Mesuji</td><td>Lampung</td><td>085247124348</td><td>JL. Tanggamus RT 05 RW 05 Desa Mulya Sari Kec. Mesuji Kab. Mesuji Lampung</td></tr>
+                    <tr><td>39</td><td>Endin</td><td>Lebak</td><td>Banten</td><td>081994118708</td><td>Kp. Pasir Gebang Ds. Cisarap Kec. Wanasalam Kab. Lebak Banten</td></tr>
+                    <tr><td>40</td><td>Titi Sumiati</td><td>Majalengka</td><td>Jawa Barat</td><td>081222006688</td><td>Desa Gunung Sari BLK Sabtu Jalan Cangkore Asri Kec. Kasokandel Kab. Majalengka Jawa Barat</td></tr>
+                    <tr><td>41</td><td>Abd. Wahid</td><td>Sampang</td><td>Jawa Timur</td><td>082343928089</td><td>Toko SMS Jl. Rajawali No. 10 Depan Pintu Gerbang Selatan RSUD dr Mohammad Zyn Kel. Karang Dalem Kec. Sampang Kab. Sampang Jawa Timur</td></tr>
+                    <tr><td>42</td><td>Ju'subaidi</td><td>Ponorogo</td><td>Jawa Timur</td><td>08125968329</td><td>Jl. Pramuka Gg. 2 No. 3b Kel. Mangunsuman Kec. Siman Kab. Ponorogo Jawa Timur</td></tr>
+                    <tr><td>43</td><td>Mutingah (Tina)</td><td>Cilacap</td><td>Jawa Tengah</td><td>+886907748988</td><td>Toko Kembang Sepasang 2 Jalan Haji Shoma Dusun Balai Panjang RT 02 RW 01 Desa Cisumur Kec. Gandrungmangu Kab. Cilacap Jawa Tengah</td></tr>
+                    <tr><td>44</td><td>Dede Iwan Hermawan</td><td>Sumedang</td><td>Jawa Barat</td><td>081313011371</td><td>Dsn Tolengas RT 03 RW 03 Desa Tolengas Kec. Tomo Kab. Sumedang Jawa Barat</td></tr>
+                    <tr><td>45</td><td>Sargana, S.IP M.Si</td><td>Bantul</td><td>Daerah Istimewa Yogyakarta</td><td>081392467404</td><td>Perumnas Guwosari Blok VI/101 RT 04 Desa Guwosari Kec. Pajangan Kab. Bantul Daerah Istimewa Yogyakarta</td></tr>
+                    <tr><td>46</td><td>Aswandi</td><td>Luwu</td><td>Sulawesi Selatan</td><td>085119991788</td><td>Desa Lauwa Kec. Belopa Utara Kab. Luwu Sulawesi Selatan</td></tr>
+                    <tr><td>47</td><td>Siswo Pranoto</td><td>Trenggalek</td><td>Jawa Timur</td><td>085230116156</td><td>RT 03 RW 02 Desa Pogalan Kec. Pogalan Kab. Trenggalek Jawa Timur</td></tr>
+                    <tr><td>48</td><td>Fatkhurrohman</td><td>Kendal</td><td>Jawa Tengah</td><td>085132555274</td><td>Desa Kangkung Tegalsari RT 06 RW 04 Kec. Kangkung Kab. Kendal Prov. Jawa Tengah</td></tr>
+                    <tr><td>49</td><td>Suciah</td><td>Semarang</td><td>Jawa Tengah</td><td>08112616565</td><td>RT 03 RW 02 Banyunganti Kebondalem Kec. Jambu Kab. Semarang Jawa Tengah</td></tr>
+                    <tr><td>50</td><td>Sutomo</td><td>Grobogan</td><td>Jawa Tengah</td><td>085600362431</td><td>Desa Godong RT RW 01 Kec. Godong Kab. Grobogan Prov. Jawa Tengah</td></tr>
+                    <tr><td>51</td><td>Joko Prayitno</td><td>Rejang Lebong</td><td>Bengkulu</td><td>082176032531</td><td>Jl. Usaha Tani RT 03 RW 06 Kel. Talang Benih Kec. Curup Kab. Rejang Lebong Prov. Bengkulu</td></tr>
+                    <tr><td>52</td><td>Aswar</td><td>Soppeng</td><td>Sulawesi Selatan</td><td>08971777767</td><td>Gattareng Toa, Kec. Marioriwawo Kab. Soppeng Prov. Sulawesi Selatan</td></tr>
+                    <tr><td>53</td><td>Yulianus Rawan</td><td>Nabire</td><td>Papua Tengah</td><td>081354158844</td><td>Jl. Gagak No.5 Kel. Siriwini Kec. Nabire Kab. Nabire Papua Tengah</td></tr>
+                    <tr><td>54</td><td>Syukri Sp. M.Si</td><td>Aceh Tamiang</td><td>Aceh</td><td>085264515191</td><td>Dusun Sirih Desa Paya Awe Kec. Karang Baru Kab. Aceh Tamiang Prov. Aceh</td></tr>
+                    <tr><td>55</td><td>Suranto</td><td>Bandung</td><td>Jawa Barat</td><td>081389056646</td><td>Cipeer RT 03 RW 04 Desa Cingcin Kec. Soreang Kab. Bandung Jawa Barat</td></tr>
+                    <tr><td>56</td><td>Aank Junaidi</td><td>Bengkulu Selatan</td><td>Bengkulu</td><td>0811739900</td><td>Jl. Kolonel Berlian, Kota Manna Kab. Bengkulu Selatan Prov. Bengkulu</td></tr>
+                    <tr><td>57</td><td>Harmi</td><td>Kotabaru</td><td>Kalimantan Selatan</td><td>085266639800</td><td>Batu Tanau RT 02 RW 00 Desa Batu Tanau Kec. Pulau Laut Timur Kab. KotaBaru Kalimantan Selatan</td></tr>
+                    <tr><td>58</td><td>Muharip</td><td>Indramayu</td><td>Jawa Barat</td><td>085314390484</td><td>Karangjaya RT 11 RW 03 Desa Mangunjaya Kec. Anjatan Kab. Indramayu Jawa Barat</td></tr>
+                    <tr><td>59</td><td>Hirman</td><td>Hulu Sungai Tengah Kota Barabai</td><td>Kalimantan Selatan</td><td>08125004477</td><td>Desa Kapar RT 10 No. 5 Kec. Batang Alai Selatan Kab. Hulu Sungai Tengah Kota Barabai Kalimantan Selatan</td></tr>
+                    <tr><td>60</td><td>Dwi Lestari Asih</td><td>Bulungan</td><td>Kalimantan Utara</td><td>081352198236</td><td>Jl. Alamanda RT 08 Desa Karang Agung Kec. Tanjung Palas Utara Kab. Bulungan Kalimantan Utara</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<style>
+    .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        z-index: 10000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .modal-content {
+        background-color: white;
+        padding: 2rem;
+        border-radius: var(--radius-md);
+        box-shadow: 0 5px 30px rgba(0,0,0,0.3);
+        position: relative;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+    
+    .modal-close {
+        position: absolute;
+        top: 15px;
+        right: 20px;
+        font-size: 28px;
+        font-weight: bold;
+        color: #aaa;
+        cursor: pointer;
+    }
+    
+    .modal-close:hover {
+        color: var(--color-primary);
+    }
+    
+    .table-responsive {
+        overflow-x: auto;
+    }
+    
+    .mitra-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.9rem;
+    }
+    
+    .mitra-table th, .mitra-table td {
+        padding: 12px 15px;
+        border-bottom: 1px solid #eee;
+        text-align: left;
+    }
+    
+    .mitra-table th {
+        background-color: var(--color-stone);
+        color: var(--color-primary-dark);
+        font-weight: 600;
+        position: sticky;
+        top: 0;
+    }
+    
+    .mitra-table tbody tr:hover {
+        background-color: #f9f9f9;
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const btnBuka = document.getElementById('btnBukaMitra');
+        const modalMitra = document.getElementById('modalMitra');
+        const btnTutup = document.getElementById('closeMitra');
+        
+        if (btnBuka && modalMitra && btnTutup) {
+            btnBuka.addEventListener('click', (e) => {
+                e.preventDefault();
+                modalMitra.style.display = 'flex';
+            });
+            
+            btnTutup.addEventListener('click', () => {
+                modalMitra.style.display = 'none';
+            });
+            
+            modalMitra.addEventListener('click', (e) => {
+                if (e.target === modalMitra) {
+                    modalMitra.style.display = 'none';
+                }
+            });
+        }
+    });
+</script>

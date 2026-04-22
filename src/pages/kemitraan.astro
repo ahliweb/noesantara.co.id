@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import DaftarMitra from '../components/DaftarMitra.astro';
 ---
 
 <Layout title="Peluang Kemitraan" description="Bergabunglah sebagai mitra PT Rumah Sehat Noesantara. Peluang usaha agen, reseller, dan dropshipper pupuk TerraGen dan TaburMas.">
@@ -9,6 +10,7 @@ import Layout from '../layouts/Layout.astro';
             <h1 style="font-size: 3rem; margin-bottom: 1rem; color: white;">Tumbuh dan Sejahtera Bersama</h1>
             <p style="font-size: 1.2rem; max-width: 700px; margin: 0 auto; margin-bottom: 2rem; color: rgba(255,255,255,0.9);">Bukan sekadar berjualan produk, mari menjadi bagian dari ekosistem distribusi resmi dengan sistem bagi hasil yang adil, menguntungkan, dan berkelanjutan.</p>
             <a href="#skema" class="btn btn-primary">Lihat Skema Kemitraan</a>
+            <a href="#" id="btnBukaMitra" class="btn btn-outline" style="border-color: white; color: white; margin-left: 1rem;">Lihat Daftar Mitra</a>
         </div>
     </section>
 
@@ -155,4 +157,7 @@ import Layout from '../layouts/Layout.astro';
             </div>
         </div>
     </section>
+    
+    <!-- Modal Daftar Mitra -->
+    <DaftarMitra />
 </Layout>
