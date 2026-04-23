@@ -1,5 +1,72 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+const testimonialItems = [
+    {
+        image: '/assets/kesehatan-tanah/produk-terragen/terragen-testimoni-cabai-1.jpeg',
+        alt: 'Testimoni Panen Cabai',
+        quote: 'Sejak pakai TerraGen kocor dan spray rutin 10 hari sekali, tanaman cabai saya tumbuh sangat lebat dan sehat. Hasil panen meningkat pesat dan terhindar dari penyakit.',
+        name: 'Bapak Supri',
+        role: 'Petani Cabai - Jawa Timur',
+        rating: 'full'
+    },
+    {
+        image: '/assets/kesehatan-tanah/produk-terragen/terragen-testimoni-tomat-1.jpeg',
+        alt: 'Testimoni Tanaman Tomat',
+        quote: 'Produktivitas tomat saya meningkat luar biasa. Yang paling terasa, lahan jadi bebas layu fusarium berkat kandungan Trichoderma di TerraGen.',
+        name: 'Bapak Yanto',
+        role: 'Petani Tomat - Jawa Tengah',
+        rating: 'full'
+    },
+    {
+        image: '/assets/pelanggan-taburmas/pelanggan-tabur-mas-4.jpeg',
+        alt: 'Testimoni PHC TaburMas',
+        quote: 'Buah yang dihasilkan jauh lebih besar, lebat, dan warnanya lebih cerah. PHC TaburMas benar-benar nutrisi andalan bagi kami para petani.',
+        name: 'Ibu Ratna',
+        role: 'Petani Sayur Buah - Jawa Barat',
+        rating: 'full'
+    },
+    {
+        image: '/assets/kesehatan-tanah/produk-terragen/terragen-testimoni-pertumbuhan-bagus.jpeg',
+        alt: 'Testimoni Pemulihan Lahan',
+        quote: 'Tanah yang awalnya keras kini kembali gembur dan pH tanah perlahan menjadi stabil setelah 2 kali aplikasi kocor. Lahan bedengan kembali produktif.',
+        name: 'Kelompok Tani Harapan',
+        role: 'Mitra Binaan - Jawa Timur',
+        rating: 'full'
+    },
+    {
+        image: '/assets/kesehatan-tanah/produk-terragen/testimoni-terragen-edi-mesuji.jpeg',
+        alt: 'Testimoni chat Edi Mesuji',
+        quote: 'Pemakaian TerraGen membantu menurunkan kebutuhan pupuk kimia dari 350-400 kg menjadi sekitar 250 kg per hektar. Di lahan dengan pH rendah pun pertumbuhan anakan daun dan batang berkembang luar biasa, dan hasil panen meningkat dari sekitar 4,5 ton menjadi 6 ton lebih.',
+        name: 'Edi Mesuji',
+        role: 'Agen Mesuji - Petani Padi',
+        rating: 'full'
+    },
+    {
+        image: '/assets/pelanggan-taburmas/pelanggan-tabur-mas-5.jpeg',
+        alt: 'Testimoni Pertumbuhan Optimal',
+        quote: 'Aplikasi rutin PHC TaburMas memberikan nutrisi cepat serap yang langsung kelihatan hasilnya di lapangan. Ini solusi tepat untuk cuaca tak menentu.',
+        name: 'Bapak Agus',
+        role: 'Petani Sayur Daun - Jawa Tengah',
+        rating: 'half'
+    },
+    {
+        image: '/assets/pelanggan-taburmas/pelanggan-tabur-mas-2.jpeg',
+        alt: 'Testimoni Tanaman Melon',
+        quote: 'Tanaman melon kami terbukti jauh lebih kuat menahan penyakit sejak menggunakan rangkaian produk Noesantara. Daun lebih segar dan buah lebih padat.',
+        name: 'Bapak Budi',
+        role: 'Petani Melon - Jawa Timur',
+        rating: 'full'
+    },
+    {
+        image: '/assets/kesehatan-tanah/produk-terragen/testimoni-terragen-petani-padi.jpeg',
+        alt: 'Poster testimoni petani padi Edi Mesuji',
+        quote: 'Pilihan tepat petani padi saat ini. Testimoni lapangan dari Edi Mesuji memperkuat bahwa TerraGen cocok dipakai pada budidaya padi dan membantu hasil panen lebih produktif.',
+        name: 'Edi Mesuji',
+        role: 'Mitra TerraGen - Mesuji',
+        rating: 'full'
+    }
+];
 ---
 
 <Layout title="Testimoni" description="Kumpulan testimoni keberhasilan petani mitra PT Rumah Sehat Noesantara dalam menggunakan produk TerraGen dan PHC TaburMas.">
@@ -10,7 +77,6 @@ import Layout from '../layouts/Layout.astro';
         </div>
     </section>
 
-    <!-- Testimoni Grid -->
     <section class="bg-white pilar-section">
         <div class="container">
             <div class="text-center" style="margin-bottom: 3rem;">
@@ -18,108 +84,43 @@ import Layout from '../layouts/Layout.astro';
                 <p style="color: var(--color-text-light); font-style: italic; max-width: 600px; margin: 0 auto;">Kumpulan bukti nyata pemulihan tanah dan peningkatan hasil panen yang dilaporkan oleh para mitra petani kami dari seluruh Nusantara.</p>
             </div>
 
-            <div class="gallery-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
-                <!-- Testimoni 1 -->
-                <div class="gallery-item" style="border-radius: var(--radius-md); overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); display: flex; flex-direction: column;">
-                    <img src="/assets/kesehatan-tanah/produk-terragen/terragen-testimoni-cabai-1.jpeg" alt="Testimoni Panen Cabai" style="width: 100%; height: 250px; object-fit: cover; transition: transform 0.3s ease;">
-                    <div style="padding: 1.5rem; background: white; flex-grow: 1;">
-                        <div style="color: var(--color-gold); margin-bottom: 1rem; font-size: 1.2rem;">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                        </div>
-                        <p style="font-style: italic; color: var(--color-text); margin-bottom: 1rem; line-height: 1.6;">"Sejak pakai TerraGen kocor dan spray rutin 10 hari sekali, tanaman cabai saya tumbuh sangat lebat dan sehat. Hasil panen meningkat pesat dan terhindar dari penyakit."</p>
-                        <h4 style="font-family: var(--font-sans); color: var(--color-primary-dark); margin-bottom: 0.2rem;">Bapak Supri</h4>
-                        <p style="font-size: 0.85rem; color: var(--color-text-light); margin: 0;">Petani Cabai - Jawa Timur</p>
-                    </div>
+            <div class="testimoni-video-highlight">
+                <div>
+                    <span class="testimoni-type-chip">Testimoni Video</span>
+                    <h3>Lihat testimoni video langsung dari galeri</h3>
+                    <p>Klik tombol berikut untuk membuka popup video testimoni yang sama seperti di halaman galeri video.</p>
                 </div>
+                <button
+                    type="button"
+                    class="btn btn-primary video-modal-trigger"
+                    data-youtube-id="4hRapHg4ijM"
+                >
+                    <i class="fas fa-play-circle" aria-hidden="true"></i> Putar Testimoni Video
+                </button>
+            </div>
 
-                <!-- Testimoni 2 -->
-                <div class="gallery-item" style="border-radius: var(--radius-md); overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); display: flex; flex-direction: column;">
-                    <img src="/assets/kesehatan-tanah/produk-terragen/terragen-testimoni-tomat-1.jpeg" alt="Testimoni Tanaman Tomat" style="width: 100%; height: 250px; object-fit: cover; transition: transform 0.3s ease;">
-                    <div style="padding: 1.5rem; background: white; flex-grow: 1;">
-                        <div style="color: var(--color-gold); margin-bottom: 1rem; font-size: 1.2rem;">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <div class="gallery-grid testimoni-grid-page" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                {testimonialItems.map((item) => (
+                    <article class="gallery-item testimoni-card-page">
+                        <img src={item.image} alt={item.alt} class="testimoni-card-image">
+                        <div class="testimoni-card-body">
+                            <div class="testimoni-stars" aria-label="Rating 5 bintang">
+                                {item.rating === 'half' ? (
+                                    <Fragment>
+                                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                                    </Fragment>
+                                ) : (
+                                    <Fragment>
+                                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                    </Fragment>
+                                )}
+                            </div>
+                            <p class="testimoni-quote">&quot;{item.quote}&quot;</p>
+                            <h4>{item.name}</h4>
+                            <p class="testimoni-role">{item.role}</p>
                         </div>
-                        <p style="font-style: italic; color: var(--color-text); margin-bottom: 1rem; line-height: 1.6;">"Produktivitas tomat saya meningkat luar biasa. Yang paling terasa, lahan jadi bebas layu fusarium berkat kandungan Trichoderma di TerraGen."</p>
-                        <h4 style="font-family: var(--font-sans); color: var(--color-primary-dark); margin-bottom: 0.2rem;">Bapak Yanto</h4>
-                        <p style="font-size: 0.85rem; color: var(--color-text-light); margin: 0;">Petani Tomat - Jawa Tengah</p>
-                    </div>
-                </div>
-
-                <!-- Testimoni 3 -->
-                <div class="gallery-item" style="border-radius: var(--radius-md); overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); display: flex; flex-direction: column;">
-                    <img src="/assets/pelanggan-taburmas/pelanggan-tabur-mas-4.jpeg" alt="Testimoni PHC TaburMas" style="width: 100%; height: 250px; object-fit: cover; transition: transform 0.3s ease;">
-                    <div style="padding: 1.5rem; background: white; flex-grow: 1;">
-                        <div style="color: var(--color-gold); margin-bottom: 1rem; font-size: 1.2rem;">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                        </div>
-                        <p style="font-style: italic; color: var(--color-text); margin-bottom: 1rem; line-height: 1.6;">"Buah yang dihasilkan jauh lebih besar, lebat, dan warnanya lebih cerah. PHC TaburMas benar-benar nutrisi andalan bagi kami para petani."</p>
-                        <h4 style="font-family: var(--font-sans); color: var(--color-primary-dark); margin-bottom: 0.2rem;">Ibu Ratna</h4>
-                        <p style="font-size: 0.85rem; color: var(--color-text-light); margin: 0;">Petani Sayur Buah - Jawa Barat</p>
-                    </div>
-                </div>
-
-                <!-- Testimoni 4 -->
-                <div class="gallery-item" style="border-radius: var(--radius-md); overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); display: flex; flex-direction: column;">
-                    <img src="/assets/kesehatan-tanah/produk-terragen/terragen-testimoni-pertumbuhan-bagus.jpeg" alt="Testimoni Pemulihan Lahan" style="width: 100%; height: 250px; object-fit: cover; transition: transform 0.3s ease;">
-                    <div style="padding: 1.5rem; background: white; flex-grow: 1;">
-                        <div style="color: var(--color-gold); margin-bottom: 1rem; font-size: 1.2rem;">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                        </div>
-                        <p style="font-style: italic; color: var(--color-text); margin-bottom: 1rem; line-height: 1.6;">"Tanah yang awalnya keras kini kembali gembur dan pH tanah perlahan menjadi stabil setelah 2 kali aplikasi kocor. Lahan bedengan kembali produktif."</p>
-                        <h4 style="font-family: var(--font-sans); color: var(--color-primary-dark); margin-bottom: 0.2rem;">Kelompok Tani Harapan</h4>
-                        <p style="font-size: 0.85rem; color: var(--color-text-light); margin: 0;">Mitra Binaan - Jawa Timur</p>
-                    </div>
-                </div>
-
-                <!-- Testimoni 5 -->
-                <div class="gallery-item" style="border-radius: var(--radius-md); overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); display: flex; flex-direction: column;">
-                    <img src="/assets/kesehatan-tanah/produk-terragen/testimoni-terragen-edi-mesuji.jpeg" alt="Testimoni chat Edi Mesuji" style="width: 100%; height: 250px; object-fit: cover; object-position: top; transition: transform 0.3s ease;">
-                    <div style="padding: 1.5rem; background: white; flex-grow: 1;">
-                        <div style="color: var(--color-gold); margin-bottom: 1rem; font-size: 1.2rem;">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                        </div>
-                        <p style="font-style: italic; color: var(--color-text); margin-bottom: 1rem; line-height: 1.6;">"Pemakaian TerraGen membantu menurunkan kebutuhan pupuk kimia dari 350-400 kg menjadi sekitar 250 kg per hektar. Di lahan dengan pH rendah pun pertumbuhan anakan daun dan batang berkembang luar biasa, dan hasil panen meningkat dari sekitar 4,5 ton menjadi 6 ton lebih."</p>
-                        <h4 style="font-family: var(--font-sans); color: var(--color-primary-dark); margin-bottom: 0.2rem;">Edi Mesuji</h4>
-                        <p style="font-size: 0.85rem; color: var(--color-text-light); margin: 0;">Agen Mesuji - Petani Padi</p>
-                    </div>
-                </div>
-
-                <div class="gallery-item" style="border-radius: var(--radius-md); overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); display: flex; flex-direction: column;">
-                    <img src="/assets/pelanggan-taburmas/pelanggan-tabur-mas-5.jpeg" alt="Testimoni Pertumbuhan Optimal" style="width: 100%; height: 250px; object-fit: cover; transition: transform 0.3s ease;">
-                    <div style="padding: 1.5rem; background: white; flex-grow: 1;">
-                        <div style="color: var(--color-gold); margin-bottom: 1rem; font-size: 1.2rem;">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-                        </div>
-                        <p style="font-style: italic; color: var(--color-text); margin-bottom: 1rem; line-height: 1.6;">"Aplikasi rutin PHC TaburMas memberikan nutrisi cepat serap yang langsung kelihatan hasilnya di lapangan. Ini solusi tepat untuk cuaca tak menentu."</p>
-                        <h4 style="font-family: var(--font-sans); color: var(--color-primary-dark); margin-bottom: 0.2rem;">Bapak Agus</h4>
-                        <p style="font-size: 0.85rem; color: var(--color-text-light); margin: 0;">Petani Sayur Daun - Jawa Tengah</p>
-                    </div>
-                </div>
-                
-                <!-- Testimoni 6 -->
-                <div class="gallery-item" style="border-radius: var(--radius-md); overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); display: flex; flex-direction: column;">
-                    <img src="/assets/pelanggan-taburmas/pelanggan-tabur-mas-2.jpeg" alt="Testimoni Tanaman Melon" style="width: 100%; height: 250px; object-fit: cover; transition: transform 0.3s ease;">
-                    <div style="padding: 1.5rem; background: white; flex-grow: 1;">
-                        <div style="color: var(--color-gold); margin-bottom: 1rem; font-size: 1.2rem;">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                        </div>
-                        <p style="font-style: italic; color: var(--color-text); margin-bottom: 1rem; line-height: 1.6;">"Tanaman melon kami terbukti jauh lebih kuat menahan penyakit sejak menggunakan rangkaian produk Noesantara. Daun lebih segar dan buah lebih padat."</p>
-                        <h4 style="font-family: var(--font-sans); color: var(--color-primary-dark); margin-bottom: 0.2rem;">Bapak Budi</h4>
-                        <p style="font-size: 0.85rem; color: var(--color-text-light); margin: 0;">Petani Melon - Jawa Timur</p>
-                    </div>
-                </div>
-
-                <div class="gallery-item" style="border-radius: var(--radius-md); overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); display: flex; flex-direction: column;">
-                    <img src="/assets/kesehatan-tanah/produk-terragen/testimoni-terragen-petani-padi.jpeg" alt="Poster testimoni petani padi Edi Mesuji" style="width: 100%; height: 250px; object-fit: cover; transition: transform 0.3s ease;">
-                    <div style="padding: 1.5rem; background: white; flex-grow: 1;">
-                        <div style="color: var(--color-gold); margin-bottom: 1rem; font-size: 1.2rem;">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                        </div>
-                        <p style="font-style: italic; color: var(--color-text); margin-bottom: 1rem; line-height: 1.6;">"Pilihan tepat petani padi saat ini. Testimoni lapangan dari Edi Mesuji memperkuat bahwa TerraGen cocok dipakai pada budidaya padi dan membantu hasil panen lebih produktif."</p>
-                        <h4 style="font-family: var(--font-sans); color: var(--color-primary-dark); margin-bottom: 0.2rem;">Edi Mesuji</h4>
-                        <p style="font-size: 0.85rem; color: var(--color-text-light); margin: 0;">Mitra TerraGen - Mesuji</p>
-                    </div>
-                </div>
+                    </article>
+                ))}
             </div>
             
             <div class="text-center" style="margin-top: 4rem; padding: 3rem; background-color: var(--color-stone); border-radius: var(--radius-lg);">
@@ -129,21 +130,224 @@ import Layout from '../layouts/Layout.astro';
             </div>
         </div>
     </section>
+
+    <div class="video-modal" id="videoModal" hidden>
+        <div class="video-modal-backdrop" data-close-video-modal></div>
+        <div class="video-modal-dialog" role="dialog" aria-modal="true" aria-label="Pemutar video YouTube">
+            <button type="button" class="video-modal-close" data-close-video-modal aria-label="Tutup video">
+                <i class="fas fa-times" aria-hidden="true"></i>
+            </button>
+            <div class="video-modal-frame-wrap">
+                <iframe
+                    id="videoModalFrame"
+                    src="about:blank"
+                    title="Video YouTube"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen
+                ></iframe>
+            </div>
+        </div>
+    </div>
+
+    <script is:inline>
+        (() => {
+            const modal = document.getElementById('videoModal');
+            const frame = document.getElementById('videoModalFrame');
+
+            if (!modal || !frame) return;
+
+            const openModal = (youtubeId) => {
+                frame.src = `https://www.youtube.com/embed/${youtubeId}?autoplay=1&rel=0`;
+                modal.hidden = false;
+                document.body.style.overflow = 'hidden';
+            };
+
+            const closeModal = () => {
+                frame.src = 'about:blank';
+                modal.hidden = true;
+                document.body.style.overflow = '';
+            };
+
+            document.querySelectorAll('.video-modal-trigger').forEach((trigger) => {
+                trigger.addEventListener('click', () => {
+                    const youtubeId = trigger.dataset.youtubeId;
+                    if (youtubeId) openModal(youtubeId);
+                });
+            });
+
+            modal.querySelectorAll('[data-close-video-modal]').forEach((element) => {
+                element.addEventListener('click', closeModal);
+            });
+
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape' && !modal.hidden) closeModal();
+            });
+        })();
+    </script>
 </Layout>
 
 <style>
+    .testimoni-video-highlight {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1.5rem;
+        margin-bottom: 3rem;
+        padding: 1.5rem 1.75rem;
+        border-radius: var(--radius-lg);
+        background: linear-gradient(135deg, rgba(140, 158, 125, 0.14), rgba(210, 180, 140, 0.18));
+    }
+
+    .testimoni-type-chip {
+        display: inline-flex;
+        align-items: center;
+        margin-bottom: 0.75rem;
+        padding: 0.45rem 0.85rem;
+        border-radius: 999px;
+        background: var(--color-white);
+        color: var(--color-primary-dark);
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 0.03em;
+    }
+
+    .testimoni-video-highlight h3 {
+        color: var(--color-primary-dark);
+        margin-bottom: 0.5rem;
+    }
+
+    .testimoni-video-highlight p {
+        margin-bottom: 0;
+        color: var(--color-text-light);
+    }
+
+    .testimoni-card-page {
+        border-radius: var(--radius-md);
+        overflow: hidden;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        display: flex;
+        flex-direction: column;
+        background: white;
+    }
+
+    .testimoni-card-image {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+
+    .testimoni-card-body {
+        padding: 1.5rem;
+        background: white;
+        flex-grow: 1;
+    }
+
+    .testimoni-stars {
+        color: var(--color-gold);
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
+    }
+
+    .testimoni-quote {
+        font-style: italic;
+        color: var(--color-text);
+        margin-bottom: 1rem;
+        line-height: 1.6;
+    }
+
+    .testimoni-card-body h4 {
+        font-family: var(--font-sans);
+        color: var(--color-primary-dark);
+        margin-bottom: 0.2rem;
+    }
+
+    .testimoni-role {
+        font-size: 0.85rem;
+        color: var(--color-text-light);
+        margin: 0;
+    }
+
     .gallery-item:hover img {
         transform: scale(1.05);
     }
+
+    .video-modal[hidden] {
+        display: none;
+    }
+
+    .video-modal {
+        position: fixed;
+        inset: 0;
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1.5rem;
+    }
+
+    .video-modal-backdrop {
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.72);
+    }
+
+    .video-modal-dialog {
+        position: relative;
+        width: min(960px, 100%);
+        background: #111;
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+    }
+
+    .video-modal-close {
+        position: absolute;
+        top: 0.75rem;
+        right: 0.75rem;
+        z-index: 1;
+        width: 2.5rem;
+        height: 2.5rem;
+        border: 0;
+        border-radius: 999px;
+        background: rgba(0, 0, 0, 0.6);
+        color: white;
+        cursor: pointer;
+    }
+
+    .video-modal-frame-wrap {
+        position: relative;
+        width: 100%;
+        padding-top: 56.25%;
+    }
+
+    .video-modal-frame-wrap iframe {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+    }
+
     .testimony-hero {
-        min-height: 40vh; 
-        align-items: center; 
-        padding-top: 8rem; 
+        min-height: 40vh;
+        align-items: center;
+        padding-top: 8rem;
         padding-bottom: 3rem;
     }
+
     @media (max-width: 768px) {
         .testimony-hero {
             padding-top: 6rem;
+        }
+
+        .testimoni-video-highlight {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .video-modal {
+            padding: 1rem;
         }
     }
 </style>
