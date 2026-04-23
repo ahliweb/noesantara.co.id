@@ -1,0 +1,44 @@
+name: Validate
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+      - staging
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    environment:
+      name: ci
+      deployment: false
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install root dependencies
+        run: npm ci
+
+      - name: Install lead receiver dependencies
+        run: npm ci
+        working-directory: services/lead-receiver
+
+      - name: Validate environment templates and typecheck
+        env:
+          PUBLIC_CONTACT_API_URL: https://api.example.com/api/contact
+        run: npm run validate
+
+      - name: Syntax check lead receiver
+        run: node --check src/index.mjs
+        working-directory: services/lead-receiver
+
+      - name: Build lead receiver Docker image
+        run: docker build -t noesantara-lead-receiver .
+        working-directory: services/lead-receiver

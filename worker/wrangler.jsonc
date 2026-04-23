@@ -1,0 +1,91 @@
+{
+  "$schema": "../node_modules/wrangler/config-schema.json",
+  "name": "noesantara-contact-api",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-04-23",
+  "workers_dev": true,
+  "preview_urls": true,
+  "observability": {
+    "enabled": true,
+    "head_sampling_rate": 1
+  },
+  "limits": {
+    "cpu_ms": 50,
+    "subrequests": 50
+  },
+  "routes": [
+    {
+      "pattern": "api.noesantara.co.id",
+      "custom_domain": true
+    }
+  ],
+  "vars": {
+    "ENVIRONMENT": "production",
+    "ALLOWED_ORIGIN": "https://noesantara.co.id,https://www.noesantara.co.id",
+    "RATE_LIMIT_MAX": "5",
+    "RATE_LIMIT_WINDOW_SECONDS": "600",
+    "MAILKETING_API_URL": "https://api.mailketing.co.id/api/v1",
+    "MAILKETING_NOTIFICATION_ENDPOINT": "https://api.mailketing.co.id/api/v1/send",
+    "MAILKETING_SUBSCRIBE_ENDPOINT": "https://api.mailketing.co.id/api/v1/addsubtolist",
+    "STARSENDER_API_URL": "https://starsender.online/api/send-message",
+    "MOCK_DELIVERY": "false"
+  },
+  "kv_namespaces": [
+    {
+      "binding": "RATE_LIMIT_KV",
+      "id": "REPLACE_WITH_PRODUCTION_KV_NAMESPACE_ID",
+      "preview_id": "REPLACE_WITH_PRODUCTION_KV_PREVIEW_ID"
+    }
+  ],
+  "secrets": {
+    "required": [
+      "MAILKETING_API_TOKEN",
+      "MAILKETING_FROM_NAME",
+      "MAILKETING_FROM_EMAIL",
+      "MAILKETING_RECIPIENT",
+      "STARSENDER_DEVICE_API_KEY",
+      "STARSENDER_SERVER_ID",
+      "ADMIN_WHATSAPP"
+    ]
+  },
+  "env": {
+    "staging": {
+      "name": "noesantara-contact-api-staging",
+      "routes": [
+        {
+          "pattern": "api-staging.noesantara.co.id",
+          "custom_domain": true
+        }
+      ],
+      "vars": {
+        "ENVIRONMENT": "staging",
+        "ALLOWED_ORIGIN": "https://staging.noesantara.co.id,http://localhost:4321",
+        "RATE_LIMIT_MAX": "10",
+        "RATE_LIMIT_WINDOW_SECONDS": "600",
+        "MAILKETING_API_URL": "https://api.mailketing.co.id/api/v1",
+        "MAILKETING_NOTIFICATION_ENDPOINT": "https://api.mailketing.co.id/api/v1/send",
+        "MAILKETING_SUBSCRIBE_ENDPOINT": "https://api.mailketing.co.id/api/v1/addsubtolist",
+        "STARSENDER_API_URL": "https://starsender.online/api/send-message",
+        "MOCK_DELIVERY": "true"
+      },
+      "kv_namespaces": [
+        {
+          "binding": "RATE_LIMIT_KV",
+          "id": "REPLACE_WITH_STAGING_KV_NAMESPACE_ID",
+          "preview_id": "REPLACE_WITH_STAGING_KV_PREVIEW_ID"
+        }
+      ],
+      "secrets": {
+        "required": [
+          "MAILKETING_API_TOKEN",
+          "MAILKETING_FROM_NAME",
+          "MAILKETING_FROM_EMAIL",
+          "MAILKETING_RECIPIENT",
+          "STARSENDER_DEVICE_API_KEY",
+          "STARSENDER_SERVER_ID",
+          "ADMIN_WHATSAPP"
+        ]
+      }
+    }
+  }
+}

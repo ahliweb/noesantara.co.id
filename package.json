@@ -9,9 +9,17 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "typecheck": "tsc --noEmit",
+    "validate": "./scripts/validate-env.sh && npm run typecheck && astro build",
+    "worker:dev": "npx wrangler dev worker/src/index.ts --config worker/wrangler.jsonc --env staging --local",
+    "worker:deploy:staging": "npx wrangler deploy --config worker/wrangler.jsonc --env staging",
+    "worker:deploy:production": "npx wrangler deploy --config worker/wrangler.jsonc"
   },
   "dependencies": {
     "astro": "^6.1.8"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3"
   }
 }

@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import ContactForm from '../components/ContactForm.astro';
 ---
 
 <Layout title="Hubungi Kami" description="Layanan pelanggan dan pusat informasi PT Rumah Sehat Noesantara. Kami siap membantu kebutuhan kemitraan dan produk Anda.">
@@ -63,35 +64,7 @@ import Layout from '../layouts/Layout.astro';
 
                 <!-- Form / Map -->
                 <div style="flex: 1.5; min-width: 300px;">
-                    <div style="background: var(--color-ivory); padding: 3rem; border-radius: var(--radius-lg);">
-                        <h3 style="font-family: var(--font-sans); margin-bottom: 1.5rem; color: var(--color-primary-dark);">Tinggalkan Pesan</h3>
-                        <form action="#" method="POST">
-                            <div class="flex-group-responsive" style="margin-bottom: 1rem;">
-                                <div style="flex: 1;">
-                                    <label for="name" style="display: block; margin-bottom: 0.5rem; font-size: 0.9rem; color: var(--color-text-light);">Nama Lengkap</label>
-                                    <input type="text" id="name" style="width: 100%; padding: 0.8rem; border: 1px solid var(--color-stone); border-radius: var(--radius-sm); font-family: inherit;">
-                                </div>
-                                <div style="flex: 1;">
-                                    <label for="phone" style="display: block; margin-bottom: 0.5rem; font-size: 0.9rem; color: var(--color-text-light);">No. WhatsApp</label>
-                                    <input type="tel" id="phone" style="width: 100%; padding: 0.8rem; border: 1px solid var(--color-stone); border-radius: var(--radius-sm); font-family: inherit;">
-                                </div>
-                            </div>
-                            <div style="margin-bottom: 1rem;">
-                                <label for="subject" style="display: block; margin-bottom: 0.5rem; font-size: 0.9rem; color: var(--color-text-light);">Keperluan</label>
-                                <select id="subject" style="width: 100%; padding: 0.8rem; border: 1px solid var(--color-stone); border-radius: var(--radius-sm); font-family: inherit; background: white;">
-                                    <option value="kemitraan">Daftar Kemitraan (Agen/Reseller)</option>
-                                    <option value="pembelian">Pembelian Produk</option>
-                                    <option value="konsultasi">Konsultasi Pertanian</option>
-                                    <option value="lainnya">Lainnya</option>
-                                </select>
-                            </div>
-                            <div style="margin-bottom: 1.5rem;">
-                                <label for="message" style="display: block; margin-bottom: 0.5rem; font-size: 0.9rem; color: var(--color-text-light);">Pesan</label>
-                                <textarea id="message" rows="5" style="width: 100%; padding: 0.8rem; border: 1px solid var(--color-stone); border-radius: var(--radius-sm); font-family: inherit; resize: vertical;"></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-primary" style="width: 100%; padding: 1rem; font-size: 1.1rem; border: none; cursor: pointer;">Kirim Pesan</button>
-                        </form>
-                    </div>
+                    <ContactForm />
                 </div>
             </div>
         </div>

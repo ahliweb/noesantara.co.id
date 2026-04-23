@@ -1,43 +1,61 @@
-# Astro Starter Kit: Minimal
+# NoeSantara Website
 
-```sh
-npm create astro@latest -- --template minimal
+Astro marketing website for `noesantara.co.id` with a production-ready contact/lead flow built for:
+
+- Cloudflare Pages for the static frontend
+- Cloudflare Workers for the secure form API
+- Mailketing for admin email notifications and optional subscriber capture
+- Starsender for admin WhatsApp notifications
+- Coolify Managed Service for an optional lead receiver and database path
+- GitHub Actions for CI/CD
+
+## Quick Start
+
+```bash
+npm install
+npm run dev
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+The contact form reads only one public environment variable:
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+```bash
+PUBLIC_CONTACT_API_URL=https://api.noesantara.co.id/api/contact
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Validation
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+```bash
+npm run validate
+```
 
-Any static assets, like images, can be placed in the `public/` directory.
+This runs:
 
-## 🧞 Commands
+- environment template validation
+- TypeScript typecheck
+- Astro production build
 
-All commands are run from the root of the project, from a terminal:
+## Worker Local Development
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+```bash
+cp worker/.dev.vars.example worker/.dev.vars.staging
+npm run worker:dev
+```
 
-## 👀 Want to learn more?
+## Optional Lead Receiver
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+```bash
+cd services/lead-receiver
+npm install
+npm run start
+```
+
+## Documentation
+
+- Architecture: `docs/architecture.md`
+- Cloudflare Pages and Worker setup: `docs/deployment/cloudflare-pages-worker.md`
+- GitHub Actions setup: `docs/deployment/github-actions.md`
+- Coolify managed service setup: `docs/deployment/coolify-managed-service.md`
+- Mailketing integration notes: `docs/integrations/mailketing.md`
+- Starsender integration notes: `docs/integrations/starsender.md`
+- Security notes: `docs/security.md`
+- Runbook and test flow: `docs/runbooks/contact-form-lead-flow.md`
