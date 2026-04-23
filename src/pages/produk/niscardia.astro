@@ -1,0 +1,182 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="Niscardia - Coming Soon" description="Niscardia adalah lini kesehatan manusia NoeSantara yang sedang dipersiapkan dan akan segera hadir.">
+    <section class="bg-stone niscardia-hero">
+        <div class="container">
+            <div class="niscardia-flex">
+                <div class="niscardia-visual">
+                    <div class="niscardia-image-shell">
+                        <span class="coming-pill">Coming Soon</span>
+                        <img src="/assets/kesehatan-manusia/produk-niscardia/niscardia-cover.jpeg" alt="Niscardia cover" class="niscardia-main-image">
+                    </div>
+                </div>
+
+                <div class="niscardia-copy">
+                    <div class="product-badge">Kesehatan Manusia</div>
+                    <h1>Niscardia</h1>
+                    <h2 class="text-gold">Lini Produk Sedang Dipersiapkan</h2>
+                    <p>
+                        Niscardia merupakan bagian dari pengembangan ekosistem NoeSantara di sektor kesehatan manusia. Halaman ini disiapkan sebagai placeholder resmi sambil menunggu informasi produk, manfaat, dan detail peluncuran diumumkan.
+                    </p>
+                    <ul class="niscardia-points">
+                        <li><i class="fas fa-check-circle text-primary"></i> Status produk: belum diluncurkan</li>
+                        <li><i class="fas fa-check-circle text-primary"></i> Materi visual awal sudah tersedia</li>
+                        <li><i class="fas fa-check-circle text-primary"></i> Informasi resmi akan diperbarui di halaman ini</li>
+                    </ul>
+
+                    <div class="niscardia-actions">
+                        <a href="/produk" class="btn btn-primary">Kembali ke Katalog Produk</a>
+                        <a href="https://wa.me/6281334629468?text=Halo%20saya%20ingin%20mendapat%20info%20saat%20Niscardia%20resmi%20hadir" class="btn btn-outline" target="_blank">Minta Info Saat Rilis</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-white pilar-section">
+        <div class="container" style="max-width: 960px;">
+            <div class="text-center" style="margin-bottom: 2.5rem;">
+                <h2 class="section-title">Preview Visual</h2>
+                <p class="section-subtitle" style="margin-bottom: 0;">Aset awal lini kesehatan manusia NoeSantara yang sudah disiapkan untuk tahap pengembangan berikutnya.</p>
+            </div>
+
+            <div class="niscardia-preview-grid">
+                <div class="niscardia-preview-card">
+                    <img src="/assets/kesehatan-manusia/produk-niscardia/niscardia-cover.jpeg" alt="Preview cover Niscardia">
+                </div>
+                <div class="niscardia-preview-card">
+                    <img src="/assets/kesehatan-manusia/produk-niscardia/niscardia-nutrisi.jpeg" alt="Preview nutrisi Niscardia">
+                </div>
+            </div>
+        </div>
+    </section>
+</Layout>
+
+<style>
+    .niscardia-hero {
+        padding-top: 8rem;
+        padding-bottom: 4rem;
+    }
+
+    .niscardia-flex {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4rem;
+        align-items: center;
+    }
+
+    .niscardia-visual,
+    .niscardia-copy {
+        flex: 1;
+        min-width: 300px;
+    }
+
+    .niscardia-image-shell {
+        position: relative;
+    }
+
+    .coming-pill {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        z-index: 2;
+        background: rgba(18, 53, 30, 0.92);
+        color: white;
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        padding: 0.45rem 0.8rem;
+        border-radius: 999px;
+    }
+
+    .niscardia-main-image {
+        width: 100%;
+        border-radius: var(--radius-lg);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.16);
+    }
+
+    .niscardia-copy h1 {
+        font-size: 3.4rem;
+        margin-bottom: 0.4rem;
+        font-family: var(--font-sans);
+        color: var(--color-primary);
+    }
+
+    .niscardia-copy h2 {
+        font-family: var(--font-sans);
+        margin-bottom: 1.5rem;
+        font-size: 1.5rem;
+    }
+
+    .niscardia-copy p {
+        font-size: 1.05rem;
+        line-height: 1.8;
+        color: var(--color-text);
+        margin-bottom: 1.5rem;
+    }
+
+    .niscardia-points {
+        display: grid;
+        gap: 0.8rem;
+        margin-bottom: 2rem;
+        color: var(--color-text-light);
+    }
+
+    .niscardia-points li {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.6rem;
+    }
+
+    .niscardia-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    .niscardia-preview-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 2rem;
+    }
+
+    .niscardia-preview-card {
+        background: white;
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        box-shadow: var(--shadow-md);
+        border: 1px solid rgba(212, 175, 55, 0.18);
+    }
+
+    .niscardia-preview-card img {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+    }
+
+    @media (max-width: 768px) {
+        .niscardia-hero {
+            padding-top: 6rem;
+            padding-bottom: 2rem;
+        }
+
+        .niscardia-flex {
+            gap: 2rem;
+        }
+
+        .niscardia-copy h1 {
+            font-size: 2.5rem;
+        }
+
+        .niscardia-copy h2 {
+            font-size: 1.2rem;
+        }
+
+        .niscardia-preview-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
