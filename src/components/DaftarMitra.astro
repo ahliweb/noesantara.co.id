@@ -2,11 +2,20 @@
 interface Props {
     standalone?: boolean;
     title?: string;
+    rows?: Array<{
+        no: number;
+        nama: string;
+        wilayah: string;
+        provinsi: string;
+        nohp: string;
+        alamat: string;
+    }>;
 }
 
 const {
     standalone = false,
-    title = 'Data Mitra Agen'
+    title = 'Data Mitra Agen',
+    rows = []
 } = Astro.props;
 ---
 
@@ -36,6 +45,16 @@ const {
                     </tr>
                 </thead>
                 <tbody>
+                    {rows.length > 0 ? rows.map((row) => (
+                        <tr>
+                            <td>{row.no}</td>
+                            <td>{row.nama}</td>
+                            <td>{row.wilayah}</td>
+                            <td>{row.provinsi}</td>
+                            <td>{row.nohp}</td>
+                            <td>{row.alamat}</td>
+                        </tr>
+                    )) : <>
                     <tr><td>1</td><td>Sudarno</td><td>Kediri</td><td>Jawa Timur</td><td>085790927269</td><td>dorok manggis puncu Kediri Jatim</td></tr>
                     <tr><td>2</td><td>Wa Sahia</td><td>Muna Barat</td><td>Sulawesi Tenggara</td><td>081355467369</td><td>jalan Poros Lawa-Matakidi desa Watumela kec. Lawa kabupaten muna barat Sulawesi Tenggara</td></tr>
                     <tr><td>3</td><td>Arif Wibisono</td><td>Probolinggo</td><td>Jawa Timur</td><td>081231335573</td><td>Dsn Krajan I RT 01 RW 01 desa Tegal Mojo Kec Tegal Siwalan Kab Probolinggo Jawa Timur</td></tr>
@@ -96,6 +115,7 @@ const {
                     <tr><td>58</td><td>Muharip</td><td>Indramayu</td><td>Jawa Barat</td><td>085314390484</td><td>Karangjaya RT 11 RW 03 Desa Mangunjaya Kec. Anjatan Kab. Indramayu Jawa Barat</td></tr>
                     <tr><td>59</td><td>Hirman</td><td>Hulu Sungai Tengah Kota Barabai</td><td>Kalimantan Selatan</td><td>08125004477</td><td>Desa Kapar RT 10 No. 5 Kec. Batang Alai Selatan Kab. Hulu Sungai Tengah Kota Barabai Kalimantan Selatan</td></tr>
                     <tr><td>60</td><td>Dwi Lestari Asih</td><td>Bulungan</td><td>Kalimantan Utara</td><td>081352198236</td><td>Jl. Alamanda RT 08 Desa Karang Agung Kec. Tanjung Palas Utara Kab. Bulungan Kalimantan Utara</td></tr>
+                    </>}
                 </tbody>
             </table>
         </div>

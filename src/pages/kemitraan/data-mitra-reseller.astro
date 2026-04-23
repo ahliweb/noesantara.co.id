@@ -1,0 +1,43 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import DaftarMitra from '../../components/DaftarMitra.astro';
+
+const resellerRows = [
+    {
+        no: 1,
+        nama: 'Suherman',
+        wilayah: 'Ogan Komering Ilir',
+        provinsi: 'Sumatera Selatan',
+        nohp: '085669544757',
+        alamat: 'RT 05 Dusun 04 Desa Mulya Jaya Kec. Mesuji Raya Kab. Ogan Komering Ilir Sumatera Selatan'
+    },
+    {
+        no: 2,
+        nama: 'Amiruddin',
+        wilayah: 'Banggai Kepulauan',
+        provinsi: 'Sulawesi Tengah',
+        nohp: '082195590331',
+        alamat: 'Desa Tombos Kec. Paling Tengah Kab. Banggai Kepulauan Sulawesi Tengah'
+    },
+    {
+        no: 3,
+        nama: "Titi Marfu'ah",
+        wilayah: 'Cilacap',
+        provinsi: 'Jawa Tengah',
+        nohp: '085227358589',
+        alamat: 'Jalan Progo No. 27 RT 002 RW 005 Desa Karangmangu Kec Kroya Kab Cilacap Jawa Tengah'
+    },
+    {
+        no: 4,
+        nama: 'Heni Lailatul Rochmah',
+        wilayah: 'Magelang',
+        provinsi: 'Jawa Tengah',
+        nohp: '085868157015',
+        alamat: 'Dusun Ngemplak Lor RT 22 RW 26 Desa Sirahan Kec. Salam Kab. Magelang Jawa Tengah'
+    }
+];
+---
+
+<Layout title="Data Mitra Reseller" description="Data mitra reseller resmi PT Rumah Sehat Noesantara yang dapat dibuka langsung melalui URL khusus.">
+    <DaftarMitra standalone={true} title="Data Mitra Reseller" rows={resellerRows} />
+</Layout>

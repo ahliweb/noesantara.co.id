@@ -9,9 +9,10 @@ import DaftarMitra from '../components/DaftarMitra.astro';
         <div class="container text-center">
             <h1 class="hero-title">Tumbuh dan Sejahtera Bersama</h1>
             <p class="hero-desc">Bukan sekadar berjualan produk, mari menjadi bagian dari ekosistem distribusi resmi dengan sistem bagi hasil yang adil, menguntungkan, dan berkelanjutan.</p>
-            <div class="flex-group-responsive" style="justify-content: center;">
+            <div class="kemitraan-hero-actions">
                 <a href="#skema" class="btn btn-primary">Lihat Skema Kemitraan</a>
                 <a href="#data-mitra-agen" id="btnBukaMitra" class="btn btn-outline btn-mitra">Lihat Data Mitra Agen</a>
+                <a href="/kemitraan/data-mitra-reseller" class="btn btn-outline btn-mitra">Lihat Data Mitra Reseller</a>
             </div>
         </div>
     </section>
@@ -194,6 +195,25 @@ import DaftarMitra from '../components/DaftarMitra.astro';
         justify-content: center;
         gap: 1rem;
     }
+
+    .kemitraan-hero-actions {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(220px, 1fr));
+        gap: 1rem;
+        max-width: 920px;
+        margin: 0 auto;
+        align-items: stretch;
+    }
+
+    .kemitraan-hero-actions .btn {
+        width: 100%;
+        min-height: 56px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding-inline: 1.25rem;
+        line-height: 1.35;
+    }
     
     .btn-mitra {
         border-color: white; 
@@ -210,6 +230,10 @@ import DaftarMitra from '../components/DaftarMitra.astro';
         }
         .hero-desc {
             font-size: 1rem;
+        }
+        .kemitraan-hero-actions {
+            grid-template-columns: 1fr;
+            max-width: 420px;
         }
         .btn-mitra {
             margin-left: 0 !important;
