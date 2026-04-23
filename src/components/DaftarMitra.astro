@@ -1,11 +1,20 @@
 ---
-// Daftar Mitra Component
+interface Props {
+    standalone?: boolean;
+    title?: string;
+}
+
+const {
+    standalone = false,
+    title = 'Data Mitra Agen'
+} = Astro.props;
 ---
 
-<div id="modalMitra" class="modal-overlay" style="display: none;">
-    <div class="modal-content" style="max-width: 900px; width: 95%;">
-        <span class="modal-close" id="closeMitra">&times;</span>
-        <h2 style="margin-bottom: 1.5rem; color: var(--color-primary-dark); font-family: var(--font-sans);">Daftar Mitra Resmi NoeSantara</h2>
+<div id={standalone ? 'data-mitra-agen' : 'modalMitra'} class={standalone ? 'mitra-page-shell' : 'modal-overlay'} style={standalone ? undefined : 'display: none;'}>
+    <div class:list={["modal-content", standalone && "mitra-page-content"]} style="max-width: 900px; width: 95%;">
+        {!standalone && <span class="modal-close" id="closeMitra">&times;</span>}
+        <h1 style="margin-bottom: 1.5rem; color: var(--color-primary-dark); font-family: var(--font-sans); font-size: clamp(1.8rem, 3vw, 2.4rem);">{title}</h1>
+        {standalone && <p style="margin: -0.5rem 0 1.5rem; color: var(--color-text-light);">Halaman ini dapat dibuka langsung melalui URL dan menampilkan data mitra agen resmi NoeSantara.</p>}
         <div class="table-responsive">
             <table class="mitra-table">
                 <thead>
@@ -113,7 +122,12 @@
         align-items: center;
         justify-content: center;
     }
-    
+
+    .mitra-page-shell {
+        padding: 9rem 0 5rem;
+        background: linear-gradient(180deg, var(--color-ivory) 0%, #ffffff 100%);
+    }
+
     .modal-content {
         background-color: white;
         padding: 2rem;
@@ -122,6 +136,11 @@
         position: relative;
         max-height: 90vh;
         overflow-y: auto;
+    }
+
+    .mitra-page-content {
+        margin: 0 auto;
+        max-height: none;
     }
     
     .modal-close {
@@ -239,6 +258,10 @@
     }
 
     @media (max-width: 768px) {
+        .mitra-page-shell {
+            padding-top: 7rem;
+        }
+
         .modal-content {
             padding: 1.2rem;
             width: 98% !important;
@@ -267,22 +290,46 @@
         const btnBuka = document.getElementById('btnBukaMitra');
         const modalMitra = document.getElementById('modalMitra');
         const btnTutup = document.getElementById('closeMitra');
+        const modalHash = '#data-mitra-agen';
         
         if (btnBuka && modalMitra && btnTutup) {
+            const openModal = () => {
+                modalMitra.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            };
+
+            const closeModal = () => {
+                modalMitra.style.display = 'none';
+                document.body.style.overflow = '';
+
+                if (window.location.hash === modalHash) {
+                    history.replaceState(null, '', window.location.pathname + window.location.search);
+                }
+            };
+
             btnBuka.addEventListener('click', (e) => {
                 e.preventDefault();
-                modalMitra.style.display = 'flex';
+                openModal();
+                history.replaceState(null, '', modalHash);
             });
             
-            btnTutup.addEventListener('click', () => {
-                modalMitra.style.display = 'none';
-            });
+            btnTutup.addEventListener('click', closeModal);
             
             modalMitra.addEventListener('click', (e) => {
                 if (e.target === modalMitra) {
-                    modalMitra.style.display = 'none';
+                    closeModal();
                 }
             });
+
+            window.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && modalMitra.style.display === 'flex') {
+                    closeModal();
+                }
+            });
+
+            if (window.location.hash === modalHash) {
+                openModal();
+            }
         }
 
         // Pagination & Sorting & Filtering Logic
