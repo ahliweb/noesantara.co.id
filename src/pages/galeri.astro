@@ -86,22 +86,34 @@ const videoCategories = [...new Set(videoItems.map((item) => item.category))];
                 <p class="section-subtitle" style="margin-bottom: 0;">Dokumentasi visual hasil aplikasi TerraGen dan PHC TaburMas di lapangan.</p>
             </div>
 
-            <div class="gallery-category-row" aria-label="Kategori galeri foto">
+            <div class="gallery-category-row" data-filter-group="foto" aria-label="Kategori galeri foto">
+                <button type="button" class="gallery-category-chip is-active" data-filter-button data-filter-group="foto" data-filter-value="semua">Semua</button>
                 {photoCategories.map((category) => (
-                    <span class="gallery-category-chip">{category}</span>
+                    <button type="button" class="gallery-category-chip" data-filter-button data-filter-group="foto" data-filter-value={category}>{category}</button>
                 ))}
             </div>
 
             <div class="gallery-grid gallery-photo-grid">
                 {photoItems.map((item) => (
-                    <article class="gallery-item gallery-card">
+                    <button
+                        type="button"
+                        class="gallery-item gallery-card gallery-photo-button"
+                        data-filter-item
+                        data-filter-group="foto"
+                        data-category={item.category}
+                        data-photo-src={item.image}
+                        data-photo-alt={item.alt}
+                        data-photo-title={item.title}
+                        aria-label={`Lihat foto ${item.title}`}
+                    >
                         <img src={item.image} alt={item.alt} class="gallery-card-image">
                         <div class="gallery-card-body">
                             <span class="gallery-item-category">{item.category}</span>
                             <h4>{item.title}</h4>
                             <p>{item.description}</p>
+                            <span class="photo-gallery-link">Lihat foto</span>
                         </div>
-                    </article>
+                    </button>
                 ))}
             </div>
 
@@ -110,9 +122,10 @@ const videoCategories = [...new Set(videoItems.map((item) => item.category))];
                 <p class="section-subtitle" style="margin-bottom: 0;">Klik video untuk menonton testimoni dan dokumentasi lapangan dalam popup.</p>
             </div>
 
-            <div class="gallery-category-row" aria-label="Kategori galeri video">
+            <div class="gallery-category-row" data-filter-group="video" aria-label="Kategori galeri video">
+                <button type="button" class="gallery-category-chip is-active" data-filter-button data-filter-group="video" data-filter-value="semua">Semua</button>
                 {videoCategories.map((category) => (
-                    <span class="gallery-category-chip">{category}</span>
+                    <button type="button" class="gallery-category-chip" data-filter-button data-filter-group="video" data-filter-value={category}>{category}</button>
                 ))}
             </div>
 
@@ -122,6 +135,9 @@ const videoCategories = [...new Set(videoItems.map((item) => item.category))];
                         type="button"
                         class="video-gallery-card video-modal-trigger"
                         data-youtube-id={video.youtubeId}
+                        data-filter-item
+                        data-filter-group="video"
+                        data-category={video.category}
                         aria-label={`Putar ${video.title}`}
                     >
                         <div class="video-gallery-preview">
@@ -169,39 +185,197 @@ const videoCategories = [...new Set(videoItems.map((item) => item.category))];
         </div>
     </div>
 
+    <div class="photo-lightbox" id="photoLightbox" hidden>
+        <div class="photo-lightbox-backdrop" data-close-photo-lightbox></div>
+        <div class="photo-lightbox-dialog" role="dialog" aria-modal="true" aria-label="Pratinjau foto galeri">
+            <button type="button" class="photo-lightbox-close" data-close-photo-lightbox aria-label="Tutup foto">
+                <i class="fas fa-times" aria-hidden="true"></i>
+            </button>
+            <div class="photo-lightbox-media-wrap">
+                <img id="photoLightboxImage" src="about:blank" alt="">
+            </div>
+            <div class="photo-lightbox-caption">
+                <h3 id="photoLightboxTitle"></h3>
+            </div>
+        </div>
+    </div>
+
     <script is:inline>
         (() => {
-            const modal = document.getElementById('videoModal');
-            const frame = document.getElementById('videoModalFrame');
+            const videoModal = document.getElementById('videoModal');
+            const videoFrame = document.getElementById('videoModalFrame');
+            const photoLightbox = document.getElementById('photoLightbox');
+            const photoImage = document.getElementById('photoLightboxImage');
+            const photoTitle = document.getElementById('photoLightboxTitle');
 
-            if (!modal || !frame) return;
+            if (!videoModal || !videoFrame || !photoLightbox || !photoImage || !photoTitle) return;
 
-            const openModal = (youtubeId) => {
-                frame.src = `https://www.youtube.com/embed/${youtubeId}?autoplay=1&rel=0`;
-                modal.hidden = false;
-                document.body.style.overflow = 'hidden';
+            const getActiveModalCount = () => [videoModal, photoLightbox].filter((modal) => !modal.hidden).length;
+            const syncScrollLock = () => {
+                document.body.style.overflow = getActiveModalCount() > 0 ? 'hidden' : '';
             };
 
-            const closeModal = () => {
-                frame.src = 'about:blank';
-                modal.hidden = true;
-                document.body.style.overflow = '';
+            const openVideoModal = (youtubeId) => {
+                videoFrame.src = `https://www.youtube.com/embed/${youtubeId}?autoplay=1&rel=0`;
+                videoModal.hidden = false;
+                syncScrollLock();
+            };
+
+            const closeVideoModal = () => {
+                videoFrame.src = 'about:blank';
+                videoModal.hidden = true;
+                syncScrollLock();
+            };
+
+            const openPhotoLightbox = (src, alt, title) => {
+                photoImage.src = src;
+                photoImage.alt = alt || title || 'Foto galeri';
+                photoTitle.textContent = title || alt || 'Foto galeri';
+                photoLightbox.hidden = false;
+                syncScrollLock();
+            };
+
+            const closePhotoLightbox = () => {
+                photoImage.src = 'about:blank';
+                photoImage.alt = '';
+                photoTitle.textContent = '';
+                photoLightbox.hidden = true;
+                syncScrollLock();
+            };
+
+            const setButtonState = (group, value) => {
+                document.querySelectorAll(`[data-filter-button][data-filter-group="${group}"]`).forEach((item) => {
+                    item.classList.toggle('is-active', item.dataset.filterValue === value);
+                });
+            };
+
+            const animateItemVisibility = (item, shouldShow) => {
+                clearTimeout(item._filterTimer);
+
+                if (shouldShow) {
+                    item.hidden = false;
+                    item.classList.remove('is-hidden');
+                    item.classList.add('is-entering');
+                    requestAnimationFrame(() => {
+                        requestAnimationFrame(() => {
+                            item.classList.remove('is-filtered-out');
+                        });
+                    });
+
+                    item._filterTimer = window.setTimeout(() => {
+                        item.classList.remove('is-entering');
+                    }, 260);
+                    return;
+                }
+
+                item.classList.add('is-filtered-out');
+                item._filterTimer = window.setTimeout(() => {
+                    item.hidden = true;
+                    item.classList.add('is-hidden');
+                    item.classList.remove('is-entering');
+                }, 220);
+            };
+
+            const updateUrl = (state, mode = 'replace') => {
+                const url = new URL(window.location.href);
+                if (state.foto && state.foto !== 'semua') {
+                    url.searchParams.set('foto', state.foto);
+                } else {
+                    url.searchParams.delete('foto');
+                }
+
+                if (state.video && state.video !== 'semua') {
+                    url.searchParams.set('video', state.video);
+                } else {
+                    url.searchParams.delete('video');
+                }
+
+                const nextUrl = `${url.pathname}${url.search}${url.hash}`;
+                if (mode === 'push') {
+                    window.history.pushState({}, '', nextUrl);
+                    return;
+                }
+
+                window.history.replaceState({}, '', nextUrl);
+            };
+
+            const applyFilter = (group, value, updateHistory = true) => {
+                setButtonState(group, value);
+
+                document.querySelectorAll(`[data-filter-item][data-filter-group="${group}"]`).forEach((item) => {
+                    const category = item.dataset.category;
+                    const isVisible = value === 'semua' || category === value;
+                    animateItemVisibility(item, isVisible);
+                });
+
+                filterState[group] = value;
+                if (updateHistory) updateUrl(filterState, 'push');
+            };
+
+            const getValidInitialValue = (group, paramName) => {
+                const value = new URLSearchParams(window.location.search).get(paramName);
+                if (!value) return 'semua';
+
+                const hasMatch = Array.from(document.querySelectorAll(`[data-filter-button][data-filter-group="${group}"]`)).some(
+                    (button) => button.dataset.filterValue === value
+                );
+
+                return hasMatch ? value : 'semua';
+            };
+
+            const filterState = {
+                foto: getValidInitialValue('foto', 'foto'),
+                video: getValidInitialValue('video', 'video')
             };
 
             document.querySelectorAll('.video-modal-trigger').forEach((trigger) => {
                 trigger.addEventListener('click', () => {
                     const youtubeId = trigger.dataset.youtubeId;
-                    if (youtubeId) openModal(youtubeId);
+                    if (youtubeId) openVideoModal(youtubeId);
                 });
             });
 
-            modal.querySelectorAll('[data-close-video-modal]').forEach((element) => {
-                element.addEventListener('click', closeModal);
+            document.querySelectorAll('.gallery-photo-button').forEach((trigger) => {
+                trigger.addEventListener('click', () => {
+                    const src = trigger.dataset.photoSrc;
+                    if (!src) return;
+
+                    openPhotoLightbox(src, trigger.dataset.photoAlt, trigger.dataset.photoTitle);
+                });
+            });
+
+            document.querySelectorAll('[data-filter-button]').forEach((button) => {
+                button.addEventListener('click', () => {
+                    const group = button.dataset.filterGroup;
+                    const value = button.dataset.filterValue;
+                    if (!group || !value) return;
+
+                    applyFilter(group, value);
+                });
+            });
+
+            videoModal.querySelectorAll('[data-close-video-modal]').forEach((element) => {
+                element.addEventListener('click', closeVideoModal);
+            });
+
+            photoLightbox.querySelectorAll('[data-close-photo-lightbox]').forEach((element) => {
+                element.addEventListener('click', closePhotoLightbox);
             });
 
             document.addEventListener('keydown', (event) => {
-                if (event.key === 'Escape' && !modal.hidden) closeModal();
+                if (event.key !== 'Escape') return;
+                if (!photoLightbox.hidden) closePhotoLightbox();
+                if (!videoModal.hidden) closeVideoModal();
             });
+
+            window.addEventListener('popstate', () => {
+                applyFilter('foto', getValidInitialValue('foto', 'foto'), false);
+                applyFilter('video', getValidInitialValue('video', 'video'), false);
+            });
+
+            applyFilter('foto', filterState.foto, false);
+            applyFilter('video', filterState.video, false);
+            updateUrl(filterState);
         })();
     </script>
 </Layout>
@@ -229,9 +403,19 @@ const videoCategories = [...new Set(videoItems.map((item) => item.category))];
     }
 
     .gallery-category-chip {
+        border: 1px solid transparent;
         padding: 0.65rem 1rem;
         background: rgba(140, 158, 125, 0.14);
         color: var(--color-primary-dark);
+        cursor: pointer;
+        transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .gallery-category-chip.is-active,
+    .gallery-category-chip:hover {
+        background: var(--color-primary-dark);
+        color: white;
+        border-color: var(--color-primary-dark);
     }
 
     .gallery-item-category {
@@ -255,6 +439,23 @@ const videoCategories = [...new Set(videoItems.map((item) => item.category))];
         overflow: hidden;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         background: white;
+        transition: opacity 0.22s ease, transform 0.22s ease, box-shadow 0.22s ease;
+    }
+
+    .gallery-photo-button {
+        appearance: none;
+        padding: 0;
+        cursor: pointer;
+        text-align: inherit;
+    }
+
+    .gallery-photo-button:focus-visible,
+    .video-gallery-card:focus-visible,
+    .gallery-category-chip:focus-visible,
+    .video-modal-close:focus-visible,
+    .photo-lightbox-close:focus-visible {
+        outline: 3px solid rgba(140, 158, 125, 0.45);
+        outline-offset: 2px;
     }
 
     .gallery-card-image,
@@ -288,7 +489,22 @@ const videoCategories = [...new Set(videoItems.map((item) => item.category))];
         transform: scale(1.05);
     }
 
+    [data-filter-item].is-filtered-out {
+        opacity: 0;
+        transform: translateY(12px) scale(0.98);
+        pointer-events: none;
+    }
+
+    [data-filter-item].is-entering {
+        animation: gallery-item-in 0.26s ease;
+    }
+
+    [data-filter-item].is-hidden {
+        display: none;
+    }
+
     .video-gallery-card {
+        appearance: none;
         padding: 0;
         cursor: pointer;
         text-align: inherit;
@@ -318,11 +534,32 @@ const videoCategories = [...new Set(videoItems.map((item) => item.category))];
         font-weight: 700;
     }
 
+    .photo-gallery-link {
+        display: inline-flex;
+        margin-top: 1rem;
+        color: var(--color-primary-dark);
+        font-weight: 700;
+    }
+
     .video-modal[hidden] {
         display: none;
     }
 
+    .photo-lightbox[hidden] {
+        display: none;
+    }
+
     .video-modal {
+        position: fixed;
+        inset: 0;
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1.5rem;
+    }
+
+    .photo-lightbox {
         position: fixed;
         inset: 0;
         z-index: 1000;
@@ -338,6 +575,12 @@ const videoCategories = [...new Set(videoItems.map((item) => item.category))];
         background: rgba(0, 0, 0, 0.72);
     }
 
+    .photo-lightbox-backdrop {
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.82);
+    }
+
     .video-modal-dialog {
         position: relative;
         width: min(960px, 100%);
@@ -347,7 +590,31 @@ const videoCategories = [...new Set(videoItems.map((item) => item.category))];
         box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
     }
 
+    .photo-lightbox-dialog {
+        position: relative;
+        width: min(1000px, 100%);
+        max-height: calc(100vh - 3rem);
+        background: #111;
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+    }
+
     .video-modal-close {
+        position: absolute;
+        top: 0.75rem;
+        right: 0.75rem;
+        z-index: 1;
+        width: 2.5rem;
+        height: 2.5rem;
+        border: 0;
+        border-radius: 999px;
+        background: rgba(0, 0, 0, 0.6);
+        color: white;
+        cursor: pointer;
+    }
+
+    .photo-lightbox-close {
         position: absolute;
         top: 0.75rem;
         right: 0.75rem;
@@ -375,6 +642,43 @@ const videoCategories = [...new Set(videoItems.map((item) => item.category))];
         border: 0;
     }
 
+    .photo-lightbox-media-wrap {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1.5rem 1.5rem 0;
+        max-height: calc(100vh - 9rem);
+    }
+
+    .photo-lightbox-media-wrap img {
+        width: 100%;
+        max-height: calc(100vh - 12rem);
+        object-fit: contain;
+        border-radius: var(--radius-md);
+    }
+
+    .photo-lightbox-caption {
+        padding: 1rem 1.5rem 1.5rem;
+        color: white;
+    }
+
+    .photo-lightbox-caption h3 {
+        margin: 0;
+        font-family: var(--font-sans);
+    }
+
+    @keyframes gallery-item-in {
+        from {
+            opacity: 0;
+            transform: translateY(12px) scale(0.98);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+    }
+
     .gallery-hero {
         min-height: 40vh;
         align-items: center;
@@ -388,6 +692,18 @@ const videoCategories = [...new Set(videoItems.map((item) => item.category))];
         }
 
         .video-modal {
+            padding: 1rem;
+        }
+
+        .photo-lightbox {
+            padding: 1rem;
+        }
+
+        .photo-lightbox-media-wrap {
+            padding: 1rem 1rem 0;
+        }
+
+        .photo-lightbox-caption {
             padding: 1rem;
         }
     }
