@@ -67,6 +67,29 @@ const testimonialItems = [
         rating: 'full'
     }
 ];
+
+const testimonialVideoItems = [
+    {
+        youtubeId: 'Yzg7z2Bnx10',
+        title: 'Testimoni dari Lebak Banten',
+        caption: 'Setelah 3 hari penyepraian TerraGen, pertumbuhan sangat pesat dan anakan padinya bertambah.'
+    },
+    {
+        youtubeId: 'Yq0-mLCrrAQ',
+        title: 'Kabar Baik dari Agen Probolinggo',
+        caption: 'Kabar baik lagi dari agen Probolinggo.'
+    },
+    {
+        youtubeId: 'bv9uQNIFuzg',
+        title: 'Testimoni Padi dari Cilacap',
+        caption: 'Testimoni padi dari Kabupaten Cilacap, Jawa Tengah.'
+    },
+    {
+        youtubeId: 'PVD4KTlOJP8',
+        title: 'Testimoni Cabe Halaman Rumah',
+        caption: 'Testimoni cabe halaman rumah dari Cilacap, Jawa Tengah.'
+    }
+];
 ---
 
 <Layout title="Testimoni" description="Kumpulan testimoni keberhasilan petani mitra PT Rumah Sehat Noesantara dalam menggunakan produk TerraGen dan PHC TaburMas.">
@@ -87,16 +110,35 @@ const testimonialItems = [
             <div class="testimoni-video-highlight">
                 <div>
                     <span class="testimoni-type-chip">Testimoni Video</span>
-                    <h3>Lihat testimoni video langsung dari galeri</h3>
-                    <p>Klik tombol berikut untuk membuka popup video testimoni yang sama seperti di halaman galeri video.</p>
+                    <h3>Lihat testimoni video langsung dari lapangan</h3>
+                    <p>Klik salah satu video berikut untuk membuka popup testimoni petani dan agen Noesantara.</p>
                 </div>
-                <button
-                    type="button"
-                    class="btn btn-primary video-modal-trigger"
-                    data-youtube-id="4hRapHg4ijM"
-                >
-                    <i class="fas fa-play-circle" aria-hidden="true"></i> Putar Testimoni Video
-                </button>
+            </div>
+
+            <div class="testimoni-video-grid">
+                {testimonialVideoItems.map((video) => (
+                    <button
+                        type="button"
+                        class="testimoni-video-card video-modal-trigger"
+                        data-youtube-id={video.youtubeId}
+                        aria-label={`Putar video ${video.title}`}
+                    >
+                        <div class="testimoni-video-preview">
+                            <img
+                                src={`https://img.youtube.com/vi/${video.youtubeId}/hqdefault.jpg`}
+                                alt={video.title}
+                                class="testimoni-video-thumbnail"
+                            >
+                            <span class="testimoni-video-play">
+                                <i class="fas fa-play" aria-hidden="true"></i>
+                            </span>
+                        </div>
+                        <div class="testimoni-video-body">
+                            <h4>{video.title}</h4>
+                            <p>{video.caption}</p>
+                        </div>
+                    </button>
+                ))}
             </div>
 
             <div class="gallery-grid testimoni-grid-page" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
@@ -219,6 +261,84 @@ const testimonialItems = [
     .testimoni-video-highlight p {
         margin-bottom: 0;
         color: var(--color-text-light);
+    }
+
+    .testimoni-video-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 3rem;
+    }
+
+    .testimoni-video-card {
+        appearance: none;
+        border: 0;
+        border-radius: var(--radius-md);
+        overflow: hidden;
+        background: white;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        cursor: pointer;
+        padding: 0;
+        text-align: left;
+        transition: transform 0.22s ease, box-shadow 0.22s ease;
+    }
+
+    .testimoni-video-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 10px 24px rgba(0,0,0,0.14);
+    }
+
+    .testimoni-video-card:focus-visible,
+    .video-modal-close:focus-visible {
+        outline: 3px solid rgba(140, 158, 125, 0.45);
+        outline-offset: 2px;
+    }
+
+    .testimoni-video-preview {
+        position: relative;
+        overflow: hidden;
+        background: #111;
+    }
+
+    .testimoni-video-thumbnail {
+        display: block;
+        width: 100%;
+        height: 190px;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+
+    .testimoni-video-card:hover .testimoni-video-thumbnail {
+        transform: scale(1.05);
+    }
+
+    .testimoni-video-play {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 2.4rem;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.48), rgba(0, 0, 0, 0.12));
+    }
+
+    .testimoni-video-body {
+        padding: 1rem;
+    }
+
+    .testimoni-video-body h4 {
+        margin-bottom: 0.55rem;
+        color: var(--color-primary-dark);
+        font-family: var(--font-sans);
+        font-size: 1rem;
+    }
+
+    .testimoni-video-body p {
+        margin: 0;
+        color: var(--color-text-light);
+        font-size: 0.9rem;
+        line-height: 1.55;
     }
 
     .testimoni-card-page {

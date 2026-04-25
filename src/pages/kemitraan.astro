@@ -1,6 +1,29 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import DaftarMitra from '../components/DaftarMitra.astro';
+
+const whatsappNumber = '6281334629468';
+const registrationMessage = `Daftarkan diri Anda sekarang sebagai *AGEN,RESELLER,DROPSHIPER* Noesantara
+* Isi form pendaftaran dengan identitas lengkap:
+* Nama  :
+* NIK      :
+* Alamat :
+* Jenis Kelamin:
+* Daftar sebagai: AGEN/RESELLER/DROPSHIPER
+
+Data bank:
+* Nama Rekening :
+* Nama Bank :
+* No rekening:
+
+Kesempatan menjadi mitra sukses bersama Noesantara menanti Anda!
+
+Silahkan masuk group WA klik link di bawah untuk mengikuti bimbingan selanjutnya
+👇
+https://chat.whatsapp.com/LnwoiuoV0Cy3AGxq1xESI5?mode=gi_t`;
+const registrationWhatsappUrl = new URL('https://api.whatsapp.com/send');
+registrationWhatsappUrl.searchParams.set('phone', whatsappNumber);
+registrationWhatsappUrl.searchParams.set('text', registrationMessage);
 ---
 
 <Layout title="Peluang Kemitraan" description="Bergabunglah sebagai mitra PT Rumah Sehat Noesantara. Peluang usaha agen, reseller, dan dropshipper pupuk TerraGen dan TaburMas.">
@@ -156,7 +179,7 @@ import DaftarMitra from '../components/DaftarMitra.astro';
             </div>
             
             <div style="margin-top: 4rem;">
-                <a href="https://wa.me/6281334629468" class="btn btn-primary" style="padding: 1rem 3rem; font-size: 1.2rem;" target="_blank"><i class="fab fa-whatsapp"></i> Daftar Kemitraan Sekarang</a>
+                <a href={registrationWhatsappUrl.toString()} class="btn btn-primary" style="padding: 1rem 3rem; font-size: 1.2rem;" target="_blank"><i class="fab fa-whatsapp"></i> Daftar Kemitraan Sekarang</a>
             </div>
         </div>
     </section>

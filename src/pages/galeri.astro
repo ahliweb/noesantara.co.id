@@ -60,6 +60,34 @@ const videoItems = [
         title: 'Video Bukti Lapangan',
         description: 'Cuplikan hasil aplikasi produk dan kondisi lahan pertanian.',
         category: 'Bukti Lapangan'
+    },
+    {
+        youtubeId: 'Yzg7z2Bnx10',
+        url: 'https://youtu.be/Yzg7z2Bnx10?si=VXx83p66IRB9tcBI',
+        title: 'Testimoni dari Lebak Banten',
+        description: 'Setelah 3 hari penyepraian TerraGen, pertumbuhan sangat pesat dan anakan padinya bertambah.',
+        category: 'Testimoni'
+    },
+    {
+        youtubeId: 'Yq0-mLCrrAQ',
+        url: 'https://youtu.be/Yq0-mLCrrAQ?si=kwta-iQlwcvMzrP_',
+        title: 'Kabar Baik dari Agen Probolinggo',
+        description: 'Kabar baik lagi dari agen Probolinggo.',
+        category: 'Testimoni'
+    },
+    {
+        youtubeId: 'bv9uQNIFuzg',
+        url: 'https://youtube.com/shorts/bv9uQNIFuzg?si=knVlDYjdcBkQqPil',
+        title: 'Testimoni Padi dari Cilacap',
+        description: 'Testimoni padi dari Kabupaten Cilacap, Jawa Tengah.',
+        category: 'Testimoni'
+    },
+    {
+        youtubeId: 'PVD4KTlOJP8',
+        url: 'https://youtube.com/shorts/PVD4KTlOJP8?si=7U8lXp9uS9Hncn1D',
+        title: 'Testimoni Cabe Halaman Rumah',
+        description: 'Testimoni cabe halaman rumah dari Cilacap, Jawa Tengah.',
+        category: 'Testimoni'
     }
 ];
 
@@ -511,6 +539,9 @@ const videoCategories = [...new Set(videoItems.map((item) => item.category))];
 
     .video-gallery-card {
         appearance: none;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
         padding: 0;
         cursor: pointer;
         text-align: inherit;
