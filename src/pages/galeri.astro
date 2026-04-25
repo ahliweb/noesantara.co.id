@@ -444,9 +444,14 @@ const videoCategories = [...new Set(videoItems.map((item) => item.category))];
 
     .gallery-photo-button {
         appearance: none;
+        display: block;
         padding: 0;
         cursor: pointer;
         text-align: inherit;
+    }
+
+    .gallery-card.gallery-item {
+        aspect-ratio: auto;
     }
 
     .gallery-photo-button:focus-visible,
@@ -460,6 +465,7 @@ const videoCategories = [...new Set(videoItems.map((item) => item.category))];
 
     .gallery-card-image,
     .video-gallery-thumbnail {
+        display: block;
         width: 100%;
         height: 250px;
         object-fit: cover;
