@@ -29,3 +29,7 @@ localonly/
 
 # wrangler
 .wrangler/
+
+# contoh konfigurasi (placeholder, aman di-commit)
+!.env.example
+!.dev.vars.example
